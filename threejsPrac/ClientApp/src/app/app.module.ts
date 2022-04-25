@@ -12,6 +12,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { LessonFourComponent } from './lesson-four/lesson-four.component';
 import { TemplateComponent } from './template/template.component';
 import { LessonFiveComponent } from './lesson-five/lesson-five.component';
+import { LessonSixComponent } from './lesson-six/lesson-six.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LessonFiveComponent } from './lesson-five/lesson-five.component';
     FetchDataComponent,
     LessonFourComponent,
     TemplateComponent,
-    LessonFiveComponent
+    LessonFiveComponent,
+    LessonSixComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -34,7 +36,8 @@ import { LessonFiveComponent } from './lesson-five/lesson-five.component';
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'lesson-four', component: LessonFourComponent },
       { path: 'template', component: TemplateComponent },
-      { path: 'lesson-five', component: LessonFiveComponent }
+      { path: 'lesson-five', component: LessonFiveComponent },
+      { path: 'lesson-six', component: LessonSixComponent }
     ])
   ],
   providers: [],
