@@ -13,6 +13,8 @@ import { LessonFourComponent } from './lesson-four/lesson-four.component';
 import { TemplateComponent } from './template/template.component';
 import { LessonFiveComponent } from './lesson-five/lesson-five.component';
 import { LessonSixComponent } from './lesson-six/lesson-six.component';
+import { LessonSevenComponent } from './lesson-seven/lesson-seven.component';
+import { LessonEightComponent } from './lesson-eight/lesson-eight.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { LessonSixComponent } from './lesson-six/lesson-six.component';
     LessonFourComponent,
     TemplateComponent,
     LessonFiveComponent,
-    LessonSixComponent
+    LessonSixComponent,
+    LessonSevenComponent,
+    LessonEightComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -37,7 +41,9 @@ import { LessonSixComponent } from './lesson-six/lesson-six.component';
       { path: 'lesson-four', component: LessonFourComponent },
       { path: 'template', component: TemplateComponent },
       { path: 'lesson-five', component: LessonFiveComponent },
-      { path: 'lesson-six', component: LessonSixComponent }
+      { path: 'lesson-six', component: LessonSixComponent },
+      { path: 'lesson-seven', component: LessonSevenComponent },
+      { path: 'lesson-eight', component: LessonEightComponent }
     ])
   ],
   providers: [],
