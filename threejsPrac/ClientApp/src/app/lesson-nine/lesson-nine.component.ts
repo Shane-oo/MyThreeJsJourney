@@ -4,11 +4,11 @@ import * as THREE from "three";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 @Component({
-  selector: 'app-lesson-eight',
-  templateUrl: './lesson-eight.component.html',
-  styleUrls: ['./lesson-eight.component.css']
+  selector: 'app-lesson-nine',
+  templateUrl: './lesson-nine.component.html',
+  styleUrls: ['./lesson-nine.component.css']
 })
-export class LessonEightComponent implements OnInit, AfterViewInit {
+export class LessonNineComponent implements OnInit, AfterViewInit {
 
   private width = window.innerWidth;
   private height = window.innerHeight;
@@ -31,7 +31,7 @@ export class LessonEightComponent implements OnInit, AfterViewInit {
   }
   @HostListener('dblclick', ['$event'])
   onDblClick(event: MouseEvent) {
-   
+
 
     if (!document.fullscreenElement) {
       this.canvas.requestFullscreen();
@@ -55,8 +55,15 @@ export class LessonEightComponent implements OnInit, AfterViewInit {
 
   //Initialise object variables
 
-  private geometry = new THREE.BoxGeometry(1, 1, 1);
-  private material = new THREE.MeshBasicMaterial({ color: 'red' });
+  //private geometry = new THREE.BoxGeometry(1, 1, 1,4,4,4);
+
+  private geometry = new THREE.BufferGeometry();  
+
+
+  private material = new THREE.MeshBasicMaterial({
+    color: 'red',
+    wireframe: true
+  });
   private mesh: THREE.Mesh = new THREE.Mesh(this.geometry, this.material);
 
 
@@ -65,19 +72,36 @@ export class LessonEightComponent implements OnInit, AfterViewInit {
   // Initialise scence
   private scene!: THREE.Scene;
 
+
+
+
   /*
   * Modifify the objects
   *
   */
   private modifiyObjects() {
+   
     //Position
 
     // Scale 
 
     // Rotation
+   
+  }
+  /*
+   * Set Geometry Attribute on geometry
+   */
+  private setGeometryAttributes() {
+    // Set Geometry attribute
+    let count = 200;
+    let positionsArray = new Float32Array(count * 3 * 3);
+    for (let i = 0; i < count * 3 * 3; i++) {
+      positionsArray[i] = (Math.random() - 0.5) * 4
+    }
+    let positionsAttribute = new THREE.BufferAttribute(positionsArray, 3);
+    this.geometry.setAttribute('position', positionsAttribute);
 
   }
-
   /*
  * Modifify the scene
  *
@@ -111,6 +135,8 @@ export class LessonEightComponent implements OnInit, AfterViewInit {
   *
   */
   private createScene() {
+    // Geometry
+    this.setGeometryAttributes();
     // Objects 
     this.modifiyObjects();
     // Scene   
@@ -154,11 +180,11 @@ export class LessonEightComponent implements OnInit, AfterViewInit {
     // use canvas element in template
 
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas });
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     this.renderer.setSize(this.width, this.height);
     // Must change component
-    let component: LessonEightComponent = this;
+    let component: LessonNineComponent = this;
     (function render() {
       //console.log('tick');
       requestAnimationFrame(render);

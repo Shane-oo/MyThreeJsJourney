@@ -2,13 +2,25 @@ import { ThisReceiver } from '@angular/compiler';
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild, HostListener } from '@angular/core';
 import * as THREE from "three";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import * as lilGui from 'lil-gui';
+import gsap from 'gsap';
 
 @Component({
-  selector: 'app-lesson-eight',
-  templateUrl: './lesson-eight.component.html',
-  styleUrls: ['./lesson-eight.component.css']
+  selector: 'app-lesson-ten',
+  templateUrl: './lesson-ten.component.html',
+  styleUrls: ['./lesson-ten.component.css']
 })
-export class LessonEightComponent implements OnInit, AfterViewInit {
+export class LessonTenComponent implements OnInit, AfterViewInit {
+
+
+  // Debug variables 
+  private gui = new lilGui.GUI();
+  private parameters = {
+    color: 0xff0000,
+    spin: () => {
+      gsap.to(this.mesh.rotation, { duration: 1, y: this.mesh.rotation.y + Math.PI * 2 });
+    }
+  };
 
   private width = window.innerWidth;
   private height = window.innerHeight;
@@ -31,8 +43,6 @@ export class LessonEightComponent implements OnInit, AfterViewInit {
   }
   @HostListener('dblclick', ['$event'])
   onDblClick(event: MouseEvent) {
-   
-
     if (!document.fullscreenElement) {
       this.canvas.requestFullscreen();
     }
@@ -40,6 +50,18 @@ export class LessonEightComponent implements OnInit, AfterViewInit {
       document.exitFullscreen();
     }
   }
+  @HostListener('document:keypress', ['$event'])
+  onHideEvent(event: KeyboardEvent) {
+    if (event.key === 'h') {
+      if (this.gui._hidden) {
+        this.gui.show();
+      }
+      else {
+        this.gui.hide();
+      }
+    }
+  }
+
   // Get Canvas
   @ViewChild('canvas')
   private canvasRef!: ElementRef;
@@ -56,7 +78,7 @@ export class LessonEightComponent implements OnInit, AfterViewInit {
   //Initialise object variables
 
   private geometry = new THREE.BoxGeometry(1, 1, 1);
-  private material = new THREE.MeshBasicMaterial({ color: 'red' });
+  private material = new THREE.MeshBasicMaterial({ color: this.parameters.color });
   private mesh: THREE.Mesh = new THREE.Mesh(this.geometry, this.material);
 
 
@@ -65,6 +87,22 @@ export class LessonEightComponent implements OnInit, AfterViewInit {
   // Initialise scence
   private scene!: THREE.Scene;
 
+
+  /*
+   * Set Geometry Attribute on geometry
+   */
+  private setGeometryAttributes() {
+    // Set Geometry attribute
+
+    //let count = 200;
+    //let positionsArray = new Float32Array(count * 3 * 3);
+    //for (let i = 0; i < count * 3 * 3; i++) {
+    //  positionsArray[i] = (Math.random() - 0.5) * 4
+    //}
+    //let positionsAttribute = new THREE.BufferAttribute(positionsArray, 3);
+    //this.geometry.setAttribute('position', positionsAttribute);
+
+  }
   /*
   * Modifify the objects
   *
@@ -107,10 +145,35 @@ export class LessonEightComponent implements OnInit, AfterViewInit {
   }
 
   /*
+   * Add Debug Tweaks 
+   *
+  */
+  private modifyDebugGUI() {
+    this.gui.add(this.mesh.position, 'y')
+      .min(-3)
+      .max(3)
+      .step(0.01)
+      .name('elevation');
+
+    this.gui.add(this.mesh, 'visible');
+    this.gui.add(this.material, 'wireframe');
+
+    this.gui.addColor(this.parameters, 'color')
+      .onChange(() => {
+        this.material.color.set(this.parameters.color);
+      });
+
+    this.gui.add(this.parameters, 'spin')
+      .name('Spin Cube');
+  }
+  /*
   * Create the scene
   *
   */
   private createScene() {
+   
+    // Geometry
+    this.setGeometryAttributes();
     // Objects 
     this.modifiyObjects();
     // Scene   
@@ -124,8 +187,11 @@ export class LessonEightComponent implements OnInit, AfterViewInit {
     this.scene.add(this.mesh);
     this.scene.add(this.camera);
 
-    // Call add Controls to canvas
+    // Call add Controls to canvas 
     this.modifyControls();
+
+    // Add the debug tweaks to the GUI
+    this.modifyDebugGUI();
   }
 
   /*
@@ -154,11 +220,11 @@ export class LessonEightComponent implements OnInit, AfterViewInit {
     // use canvas element in template
 
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas });
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     this.renderer.setSize(this.width, this.height);
     // Must change component
-    let component: LessonEightComponent = this;
+    let component: LessonTenComponent = this;
     (function render() {
       //console.log('tick');
       requestAnimationFrame(render);
@@ -182,6 +248,3 @@ export class LessonEightComponent implements OnInit, AfterViewInit {
   }
 
 }
-
-
-
