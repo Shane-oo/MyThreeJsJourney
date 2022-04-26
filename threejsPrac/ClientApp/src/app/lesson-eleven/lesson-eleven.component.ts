@@ -22,20 +22,17 @@ export class LessonElevenComponent implements OnInit, AfterViewInit {
       gsap.to(this.mesh.rotation, { duration: 1, y: this.mesh.rotation.y + Math.PI * 2 });
     }
   };
-
-  // Textures
-  private textureLoader = new THREE.TextureLoader();
-  private texture = this.textureLoader.load('../../assets/images/door/color.jpg',
-    () => {
-      console.log('load finished');
-    },
-    () => {
-      console.log('progress');
-    },
-    () => {
-      console.log('error');
-    }
-  );
+  // Loading Manager 
+  private loadingManager = new THREE.LoadingManager();
+  // Textures 
+  private textureLoader = new THREE.TextureLoader(this.loadingManager);
+  private colorTexture = this.textureLoader.load('../../assets/images/minecraft.png');
+  private alphaTexture = this.textureLoader.load('../../assets/images/door/alpha.jpg');
+  private heightTexture = this.textureLoader.load('../../assets/images/door/height.jpg');
+  private normalTexture = this.textureLoader.load('../../assets/images/door/normal.jpg');
+  private ambientOcclusionTexture = this.textureLoader.load('../../assets/images/door/ambientOcclusion.jpg');
+  private metalnessTexture = this.textureLoader.load('../../assets/images/door/metalness.jpg');
+  private roughnessTexture = this.textureLoader.load('../../assets/images/door/roughness.jpg');
 
 
   private width = window.innerWidth;
@@ -94,7 +91,7 @@ export class LessonElevenComponent implements OnInit, AfterViewInit {
   //Initialise object variables
 
   private geometry = new THREE.BoxGeometry(1, 1, 1);
-  private material = new THREE.MeshBasicMaterial({ map: this.texture });
+  private material = new THREE.MeshBasicMaterial({ map: this.colorTexture });
   private mesh: THREE.Mesh = new THREE.Mesh(this.geometry, this.material);
 
 
@@ -103,7 +100,24 @@ export class LessonElevenComponent implements OnInit, AfterViewInit {
   // Initialise scence 
   private scene!: THREE.Scene;
 
-
+  /*
+   *
+  */
+  private setLoadingManager() {
+    //this.colorTexture.repeat.x = 2;
+    //this.colorTexture.repeat.y = 3;
+    //this.colorTexture.wrapS = THREE.MirroredRepeatWrapping;
+    //this.colorTexture.wrapT = THREE.MirroredRepeatWrapping;
+    //this.colorTexture.offset.x = 0.5;
+    //this.colorTexture.offset.y = 0.5; 
+    //this.colorTexture.rotation = Math.PI / 4;
+    //this.colorTexture.center.x = 0.5;
+    //this.colorTexture.center.y = 0.5;
+    this.colorTexture.generateMipmaps = false;
+     this.colorTexture.minFilter = THREE.NearestFilter;
+   
+    this.colorTexture.magFilter = THREE.NearestFilter;
+  }
 
   /*
    * Set Geometry Attribute on geometry
@@ -181,7 +195,8 @@ export class LessonElevenComponent implements OnInit, AfterViewInit {
   *
   */
   private createScene() {
-   
+    // Loading Manager
+    this.setLoadingManager();
     // Geometry
     this.setGeometryAttributes();
     // Objects 
