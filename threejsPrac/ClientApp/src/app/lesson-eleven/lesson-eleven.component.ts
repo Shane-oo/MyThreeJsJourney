@@ -114,7 +114,7 @@ export class LessonElevenComponent implements OnInit, AfterViewInit {
     //this.colorTexture.center.x = 0.5;
     //this.colorTexture.center.y = 0.5;
     this.colorTexture.generateMipmaps = false;
-     this.colorTexture.minFilter = THREE.NearestFilter;
+    this.colorTexture.minFilter = THREE.NearestFilter;
    
     this.colorTexture.magFilter = THREE.NearestFilter;
   }
