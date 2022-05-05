@@ -27,6 +27,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ClientApp\src\assets\images\" />
+    <Folder Include="ClientApp\src\assets\images\bakedShadows" />
     <Folder Include="ClientApp\src\assets\images\environmentMaps" />
     <Folder Include="ClientApp\src\assets\images\gradients" />
     <Folder Include="ClientApp\src\assets\images\matcaps" />
