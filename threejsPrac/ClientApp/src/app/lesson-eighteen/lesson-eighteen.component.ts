@@ -81,7 +81,14 @@ export class LessonEighteenComponent implements OnInit, AfterViewInit {
   private particlesMaterial = new THREE.PointsMaterial({
     size: 0.1,
     sizeAttenuation: true,
-    map: this.particleTexture
+    map: this.particleTexture,
+    transparent: true,
+    alphaMap: this.particleTexture,
+    //alphaTest: 0.001
+    //depthTest: false
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+    vertexColors: true
   });
 
   // Particle Geometry
@@ -110,12 +117,15 @@ export class LessonEighteenComponent implements OnInit, AfterViewInit {
    */
   private setGeometryAttributes() {
     // Set Geometry attribute
-    let count = 5000;
-    let positions = new Float32Array(count * 3)
+    let count = 20000;
+    let positions = new Float32Array(count * 3);
+    let colors = new Float32Array(count * 3);
     for (let i = 0; i < count * 3; i++) {
       positions[i] = (Math.random() - 0.5) * 10;
+      colors[i] = Math.random();
     }
     this.particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    this.particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
   }
 
   /*
@@ -125,7 +135,7 @@ export class LessonEighteenComponent implements OnInit, AfterViewInit {
   private modifyObjects() {
     //Adjust Object Positions
 
-    this.particlesMaterial.color = new THREE.Color('#ff88cc');
+    //this.particlesMaterial.color = new THREE.Color('#ff88cc');
     // Scale
 
     // Rotation
@@ -222,8 +232,8 @@ export class LessonEighteenComponent implements OnInit, AfterViewInit {
     // Time
     const elapsedTime = this.clock.getElapsedTime();
     // Update Objects
-
-
+    this.particles.rotation.y = elapsedTime * 0.2;
+    this.particles.rotation.z = -elapsedTime * .5;
     // Update Camera
 
     // Update Controls
