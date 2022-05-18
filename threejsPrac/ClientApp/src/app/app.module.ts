@@ -20,7 +20,7 @@ import { LessonTwelveComponent } from './lesson-twelve/lesson-twelve.component';
 import { LessonThirteenComponent } from './lesson-thirteen/lesson-thirteen.component';
 import { LessonFifteenComponent } from './lesson-fifteen/lesson-fifteen.component';
 import { LessonSixteenComponent } from './lesson-sixteen/lesson-sixteen.component';
-import { LessonSeventeenComponent } from './lesson-seventeen/lesson-seventeen.component';
+import { LessonEighteenComponent } from './lesson-eighteen/lesson-eighteen.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,7 @@ import { LessonSeventeenComponent } from './lesson-seventeen/lesson-seventeen.co
     LessonThirteenComponent,
     LessonFifteenComponent,
     LessonSixteenComponent,
-    LessonSeventeenComponent
+    LessonEighteenComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -61,7 +61,7 @@ import { LessonSeventeenComponent } from './lesson-seventeen/lesson-seventeen.co
       { path: 'lesson-thirteen', component: LessonThirteenComponent },
       { path: 'lesson-fifteen', component: LessonFifteenComponent },
       { path: 'lesson-sixteen', component: LessonSixteenComponent },
-      { path: 'lesson-seventeen', component: LessonSeventeenComponent }
+      { path: 'lesson-eighteen', component: LessonEighteenComponent }
     ])
   ],
   providers: [],
