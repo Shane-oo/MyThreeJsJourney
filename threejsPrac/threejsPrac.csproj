@@ -29,8 +29,10 @@
     <Folder Include="ClientApp\src\assets\images\" />
     <Folder Include="ClientApp\src\assets\images\bakedShadows" />
     <Folder Include="ClientApp\src\assets\images\environmentMaps" />
+    <Folder Include="ClientApp\src\assets\images\environmentMaps2" />
     <Folder Include="ClientApp\src\assets\images\gradients" />
     <Folder Include="ClientApp\src\assets\images\matcaps" />
+    <Folder Include="ClientApp\src\assets\sounds" />
   </ItemGroup>
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
