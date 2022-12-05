@@ -26,19 +26,22 @@
     "bootstrap": "^5.1.0",
     "cannon": "^0.6.2",
     "dat.gui": "^0.7.9",
+    "glslify-loader": "^2.0.0",
     "gsap": "^3.10.4",
     "jquery": "^3.5.1",
     "lil-gui": "^0.16.1",
     "oidc-client": "^1.11.5",
     "popper.js": "^1.16.0",
+    "raw-loader": "^4.0.2",
     "rxjs": "~6.6.0",
     "three": "^0.139.2",
     "tslib": "^2.1.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~13.0.2",
-    "@angular/cli": "~13.0.2",
+    "@angular-builders/custom-webpack": "^14.1.0",
+    "@angular-devkit/build-angular": "^13.3.10",
+    "@angular/cli": "^14.2.10",
     "@angular/compiler-cli": "~13.0.1",
     "@types/cannon": "^0.1.8",
     "@types/jasmine": "~3.6.0",
@@ -52,6 +55,8 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
     "run-script-os": "^1.1.6",
+    "ts-loader": "^9.4.2",
+    "ts-shader-loader": "^2.0.2",
     "typescript": "~4.4.4"
   }
 }
