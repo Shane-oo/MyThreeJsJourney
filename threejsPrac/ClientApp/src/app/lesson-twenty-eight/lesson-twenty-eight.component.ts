@@ -2,17 +2,17 @@ import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild }
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 // @ts-ignore
-import testVertexShader from '../../assets/shaders/test/vertex.glsl';
+import vertexShader from '../../assets/shaders/patterns/vertex.glsl';
 // @ts-ignore
-import testFragmentShader from '../../assets/shaders/test/fragment.glsl';
+import fragmentShader from '../../assets/shaders/patterns/fragment.glsl';
 import * as lilGui from 'lil-gui';
 
 @Component({
-             selector: 'app-lesson-twenty-seven',
-             templateUrl: './lesson-twenty-seven.component.html',
-             styleUrls: ['./lesson-twenty-seven.component.css']
-           })
-export class LessonTwentySevenComponent implements OnInit, AfterViewInit {
+  selector: 'app-lesson-twenty-eight',
+  templateUrl: './lesson-twenty-eight.component.html',
+  styleUrls: ['./lesson-twenty-eight.component.css']
+})
+export class LessonTwentyEightComponent implements OnInit, AfterViewInit {
   /*
    * Animate the cube
    *
@@ -40,22 +40,16 @@ export class LessonTwentySevenComponent implements OnInit, AfterViewInit {
 
   // textures
   private textureLoader = new THREE.TextureLoader();
-  private flagTexture = this.textureLoader.load('../../assets/images/Flag_of_Australia.png');
 
   // geometry
   private geometry = new THREE.PlaneBufferGeometry(1, 1, 32, 32);
 
   // material
   private material = new THREE.ShaderMaterial({
-                                                   vertexShader: testVertexShader,
-                                                   fragmentShader: testFragmentShader,
-                                                   uniforms: {
-                                                     uFrequency: {value: new THREE.Vector2(10, 5)},
-                                                     uTime: {value: 0},
-                                                     uColor: {value: new THREE.Color('orange')},
-                                                     uTexture: {value: this.flagTexture}
-                                                   }
-                                                 });
+                                                vertexShader: vertexShader,
+                                                fragmentShader: fragmentShader,
+
+                                              });
   // mesh
   private mesh = new THREE.Mesh(this.geometry, this.material);
 
@@ -139,8 +133,6 @@ export class LessonTwentySevenComponent implements OnInit, AfterViewInit {
         this.geometry.setAttribute('aRandom', new THREE.BufferAttribute(randoms, 1));
     */
 
-    this.mesh.scale.y = 2 / 3;
-
   }
 
   private modifyPhysics() {
@@ -180,16 +172,6 @@ export class LessonTwentySevenComponent implements OnInit, AfterViewInit {
     */
   private modifyDebugGUI() {
 
-    this.gui.add(this.material.uniforms.uFrequency.value, 'x')
-        .min(0)
-        .max(20)
-        .step(0.01)
-        .name('frequencyX');
-    this.gui.add(this.material.uniforms.uFrequency.value, 'y')
-        .min(0)
-        .max(20)
-        .step(0.01)
-        .name('frequencyY');
   }
 
   /*
@@ -229,7 +211,7 @@ export class LessonTwentySevenComponent implements OnInit, AfterViewInit {
     const deltaTime = elapsedTime - this.oldElapsedTime;
     this.oldElapsedTime = elapsedTime;
     // Update Material
-    this.material.uniforms.uTime.value = elapsedTime;
+
     // Update Camera
 
 
@@ -256,7 +238,7 @@ export class LessonTwentySevenComponent implements OnInit, AfterViewInit {
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     // Must change component
-    let component: LessonTwentySevenComponent = this;
+    let component: LessonTwentyEightComponent = this;
     (function render() {
       //console.log('tick');
       requestAnimationFrame(render);
