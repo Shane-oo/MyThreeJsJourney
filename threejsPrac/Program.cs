@@ -1,10 +1,26 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using Microsoft.AspNetCore.StaticFiles;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
 
+builder.Services.Configure<StaticFileOptions>(options =>
+{
+    options.ContentTypeProvider = new FileExtensionContentTypeProvider
+    {
+        Mappings =
+                                                                                    {
+                                                                                        [".gltf"] = "model/gltf+json",
+                                                                                        [".glb"] = "model/gltf-binary",
+                                                                                        [".bin"] = "application/octet-stream"
+                                                                                    }
+    };
+});
+
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
