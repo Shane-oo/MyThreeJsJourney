@@ -24,6 +24,156 @@
     <None Remove="ClientApp\src\assets\images\" />
     <None Remove="ClientApp\.angular\cache\angular-webpack\e048496118fd5d65628d51dc1a919d5cb2f09127\index.pack.old" />
     <None Remove="ClientApp\.angular\cache\angular-webpack\e048496118fd5d65628d51dc1a919d5cb2f09127\index.pack.old" />
+    <None Remove="ClientApp\dist\index.html" />
+    <None Remove="ClientApp\dist\3rdpartylicenses.txt" />
+    <None Remove="ClientApp\dist\main.b6d62858067c547d.js" />
+    <None Remove="ClientApp\dist\polyfills.5f9d57258de3901a.js" />
+    <None Remove="ClientApp\dist\styles.57725bfd783a9b02.css" />
+    <None Remove="ClientApp\dist\runtime.c205abf6d5834cf8.js" />
+    <None Remove="ClientApp\dist\assets\images\minecraft.png" />
+    <None Remove="ClientApp\dist\assets\images\checkerboard-8x8.png" />
+    <None Remove="ClientApp\dist\assets\images\Flag_of_Australia.png" />
+    <None Remove="ClientApp\dist\assets\images\checkerboard-1024x1024.png" />
+    <None Remove="ClientApp\dist\assets\images\bricks\ambientOcclusion.jpg" />
+    <None Remove="ClientApp\dist\assets\images\bricks\color.jpg" />
+    <None Remove="ClientApp\dist\assets\images\bricks\normal.jpg" />
+    <None Remove="ClientApp\dist\assets\images\bricks\roughness.jpg" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\0\nx.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\0\ny.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\0\nz.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\0\pz.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\0\px.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\0\py.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\1\nx.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\1\ny.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\1\nz.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\1\pz.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\1\px.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\1\py.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\4\nx.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\4\ny.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\4\nz.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\4\pz.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\4\px.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\4\py.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\3\nx.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\3\ny.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\3\nz.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\3\pz.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\3\px.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\3\py.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\2\nx.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\2\ny.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\2\nz.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\2\pz.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\2\px.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps2\2\py.png" />
+    <None Remove="ClientApp\dist\assets\images\grass\ambientOcclusion.jpg" />
+    <None Remove="ClientApp\dist\assets\images\grass\color.jpg" />
+    <None Remove="ClientApp\dist\assets\images\grass\normal.jpg" />
+    <None Remove="ClientApp\dist\assets\images\grass\roughness.jpg" />
+    <None Remove="ClientApp\dist\assets\images\particles\8.png" />
+    <None Remove="ClientApp\dist\assets\images\particles\9.png" />
+    <None Remove="ClientApp\dist\assets\images\particles\12.png" />
+    <None Remove="ClientApp\dist\assets\images\particles\13.png" />
+    <None Remove="ClientApp\dist\assets\images\particles\11.png" />
+    <None Remove="ClientApp\dist\assets\images\particles\10.png" />
+    <None Remove="ClientApp\dist\assets\images\particles\4.png" />
+    <None Remove="ClientApp\dist\assets\images\particles\5.png" />
+    <None Remove="ClientApp\dist\assets\images\particles\7.png" />
+    <None Remove="ClientApp\dist\assets\images\particles\6.png" />
+    <None Remove="ClientApp\dist\assets\images\particles\2.png" />
+    <None Remove="ClientApp\dist\assets\images\particles\3.png" />
+    <None Remove="ClientApp\dist\assets\images\particles\1.png" />
+    <None Remove="ClientApp\dist\assets\images\matcaps\8.png" />
+    <None Remove="ClientApp\dist\assets\images\matcaps\4.png" />
+    <None Remove="ClientApp\dist\assets\images\matcaps\5.png" />
+    <None Remove="ClientApp\dist\assets\images\matcaps\7.png" />
+    <None Remove="ClientApp\dist\assets\images\matcaps\6.png" />
+    <None Remove="ClientApp\dist\assets\images\matcaps\2.png" />
+    <None Remove="ClientApp\dist\assets\images\matcaps\3.png" />
+    <None Remove="ClientApp\dist\assets\images\matcaps\1.png" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps\0\nx.jpg" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps\0\ny.jpg" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps\0\nz.jpg" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps\0\pz.jpg" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps\0\px.jpg" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps\0\py.jpg" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps\1\nx.jpg" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps\1\ny.jpg" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps\1\nz.jpg" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps\1\pz.jpg" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps\1\px.jpg" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps\1\py.jpg" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps\3\nx.jpg" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps\3\ny.jpg" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps\3\nz.jpg" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps\3\pz.jpg" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps\3\px.jpg" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps\3\py.jpg" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps\2\nx.jpg" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps\2\ny.jpg" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps\2\nz.jpg" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps\2\pz.jpg" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps\2\px.jpg" />
+    <None Remove="ClientApp\dist\assets\images\environmentMaps\2\py.jpg" />
+    <None Remove="ClientApp\dist\assets\images\bakedShadows\simpleShadow.jpg" />
+    <None Remove="ClientApp\dist\assets\images\bakedShadows\bakedShadow.jpg" />
+    <None Remove="ClientApp\dist\assets\images\gradients\5.jpg" />
+    <None Remove="ClientApp\dist\assets\images\gradients\3.jpg" />
+    <None Remove="ClientApp\dist\assets\images\door\metalness.jpg" />
+    <None Remove="ClientApp\dist\assets\images\door\ambientOcclusion.jpg" />
+    <None Remove="ClientApp\dist\assets\images\door\alpha.jpg" />
+    <None Remove="ClientApp\dist\assets\images\door\color.jpg" />
+    <None Remove="ClientApp\dist\assets\images\door\normal.jpg" />
+    <None Remove="ClientApp\dist\assets\images\door\height.jpg" />
+    <None Remove="ClientApp\dist\assets\images\door\roughness.jpg" />
+    <None Remove="ClientApp\dist\assets\models\Fox\README.md" />
+    <None Remove="ClientApp\dist\assets\models\Fox\screenshot\screenshot.jpg" />
+    <None Remove="ClientApp\dist\assets\models\Fox\glTF\Fox.bin" />
+    <None Remove="ClientApp\dist\assets\models\Fox\glTF\Fox.gltf" />
+    <None Remove="ClientApp\dist\assets\models\Fox\glTF\Texture.png" />
+    <None Remove="ClientApp\dist\assets\models\Fox\glTF-Embedded\Fox.gltf" />
+    <None Remove="ClientApp\dist\assets\models\Fox\glTF-Binary\Fox.glb" />
+    <None Remove="ClientApp\dist\assets\models\Duck\README.md" />
+    <None Remove="ClientApp\dist\assets\models\Duck\screenshot\screenshot.png" />
+    <None Remove="ClientApp\dist\assets\models\Duck\glTF\DuckCM.png" />
+    <None Remove="ClientApp\dist\assets\models\Duck\glTF\Duck0.bin" />
+    <None Remove="ClientApp\dist\assets\models\Duck\glTF\Duck.gltf" />
+    <None Remove="ClientApp\dist\assets\models\Duck\glTF-Embedded\Duck.gltf" />
+    <None Remove="ClientApp\dist\assets\models\Duck\glTF-Binary\Duck.glb" />
+    <None Remove="ClientApp\dist\assets\models\Duck\glTF-Draco\DuckCM.png" />
+    <None Remove="ClientApp\dist\assets\models\Duck\glTF-Draco\Duck.bin" />
+    <None Remove="ClientApp\dist\assets\models\Duck\glTF-Draco\0.bin" />
+    <None Remove="ClientApp\dist\assets\models\Duck\glTF-Draco\Duck.gltf" />
+    <None Remove="ClientApp\dist\assets\models\FlightHelmet\README.md" />
+    <None Remove="ClientApp\dist\assets\models\FlightHelmet\screenshot\screenshot.jpg" />
+    <None Remove="ClientApp\dist\assets\models\FlightHelmet\glTF\FlightHelmet_Materials_GlassPlasticMat_BaseColor.png" />
+    <None Remove="ClientApp\dist\assets\models\FlightHelmet\glTF\FlightHelmet_Materials_LeatherPartsMat_OcclusionRoughMetal.png" />
+    <None Remove="ClientApp\dist\assets\models\FlightHelmet\glTF\FlightHelmet_Materials_RubberWoodMat_Normal.png" />
+    <None Remove="ClientApp\dist\assets\models\FlightHelmet\glTF\FlightHelmet_Materials_LensesMat_OcclusionRoughMetal.png" />
+    <None Remove="ClientApp\dist\assets\models\FlightHelmet\glTF\FlightHelmet_Materials_GlassPlasticMat_OcclusionRoughMetal.png" />
+    <None Remove="ClientApp\dist\assets\models\FlightHelmet\glTF\FlightHelmet_Materials_LensesMat_BaseColor.png" />
+    <None Remove="ClientApp\dist\assets\models\FlightHelmet\glTF\FlightHelmet_Materials_LeatherPartsMat_Normal.png" />
+    <None Remove="ClientApp\dist\assets\models\FlightHelmet\glTF\FlightHelmet.gltf" />
+    <None Remove="ClientApp\dist\assets\models\FlightHelmet\glTF\FlightHelmet_Materials_RubberWoodMat_BaseColor.png" />
+    <None Remove="ClientApp\dist\assets\models\FlightHelmet\glTF\FlightHelmet_Materials_GlassPlasticMat_Normal.png" />
+    <None Remove="ClientApp\dist\assets\models\FlightHelmet\glTF\FlightHelmet_Materials_RubberWoodMat_OcclusionRoughMetal.png" />
+    <None Remove="ClientApp\dist\assets\models\FlightHelmet\glTF\FlightHelmet_Materials_LeatherPartsMat_BaseColor.png" />
+    <None Remove="ClientApp\dist\assets\models\FlightHelmet\glTF\FlightHelmet_Materials_MetalPartsMat_OcclusionRoughMetal.png" />
+    <None Remove="ClientApp\dist\assets\models\FlightHelmet\glTF\FlightHelmet_Materials_MetalPartsMat_Normal.png" />
+    <None Remove="ClientApp\dist\assets\models\FlightHelmet\glTF\FlightHelmet.bin" />
+    <None Remove="ClientApp\dist\assets\models\FlightHelmet\glTF\FlightHelmet_Materials_MetalPartsMat_BaseColor.png" />
+    <None Remove="ClientApp\dist\assets\models\FlightHelmet\glTF\FlightHelmet_Materials_LensesMat_Normal.png" />
+    <None Remove="ClientApp\dist\assets\sounds\hit.mp3" />
+    <None Remove="ClientApp\dist\assets\shaders\patterns\fragment.glsl" />
+    <None Remove="ClientApp\dist\assets\shaders\patterns\vertex.glsl" />
+    <None Remove="ClientApp\dist\assets\shaders\test\fragment.glsl" />
+    <None Remove="ClientApp\dist\assets\shaders\test\vertex.glsl" />
+    <None Remove="ClientApp\dist\assets\shaders\water\fragment.glsl" />
+    <None Remove="ClientApp\dist\assets\shaders\water\perlin.glsl" />
+    <None Remove="ClientApp\dist\assets\shaders\water\vertex.glsl" />
+    <None Remove="ClientApp\dist\assets\fonts\Licenses\Web Font EULA 1.7.1.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ClientApp\src\assets\images\" />
@@ -47,12 +197,12 @@
   <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
     <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
-    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --prod" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build --prod" />
 
     <!-- Include the newly-built files in the publish output -->
     <ItemGroup>
       <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
-      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+      <ResolvedFileToPublish Include="@(DistFiles-&gt;'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
         <RelativePath>wwwroot\%(RecursiveDir)%(FileName)%(Extension)</RelativePath>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
         <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
