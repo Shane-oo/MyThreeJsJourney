@@ -29,6 +29,7 @@ import { LessonTwentyTwoComponent } from './lesson-twenty-two/lesson-twenty-two.
 import { LessonTwentyThreeComponent } from './lesson-twenty-three/lesson-twenty-three.component';
 import { LessonTwentySevenComponent } from './lesson-twenty-seven/lesson-twenty-seven.component';
 import { LessonTwentyNineComponent } from './lesson-twenty-nine/lesson-twenty-nine.component';
+import { LessonTwentyEightComponent } from './lesson-twenty-eight/lesson-twenty-eight.component';
 
 @NgModule({
             declarations: [
@@ -81,8 +82,8 @@ import { LessonTwentyNineComponent } from './lesson-twenty-nine/lesson-twenty-ni
                                      {path: 'lesson-twenty-one', component: LessonTwentyOneComponent},
                                      {path: 'lesson-twenty-two', component: LessonTwentyTwoComponent},
                                      {path: 'lesson-twenty-three', component: LessonTwentyThreeComponent},
-                                     {path: 'lesson-twenty-seven', component: LessonTwentySevenComponent},
-                                     {path: 'lesson-twenty-eight', component: LessonEightComponent},
+                                     {path: 'lesson-twenty-seven', component: LessonTwentySevenComponent },
+                                     {path: 'lesson-twenty-eight', component: LessonTwentyEightComponent },
                                      {path: 'lesson-twenty-nine', component: LessonTwentyNineComponent}
                                    ])
             ],
