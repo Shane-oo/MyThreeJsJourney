@@ -30,6 +30,7 @@ import { LessonTwentyThreeComponent } from './lesson-twenty-three/lesson-twenty-
 import { LessonTwentySevenComponent } from './lesson-twenty-seven/lesson-twenty-seven.component';
 import { LessonTwentyNineComponent } from './lesson-twenty-nine/lesson-twenty-nine.component';
 import { LessonTwentyEightComponent } from './lesson-twenty-eight/lesson-twenty-eight.component';
+import { LessonThirtyComponent } from './lesson-thirty/lesson-thirty.component';
 
 @NgModule({
             declarations: [
@@ -54,7 +55,8 @@ import { LessonTwentyEightComponent } from './lesson-twenty-eight/lesson-twenty-
               LessonTwentyComponent,
               LessonTwentyOneComponent,
               LessonTwentyTwoComponent,
-              LessonTwentyThreeComponent
+              LessonTwentyThreeComponent,
+              LessonThirtyComponent
             ],
             imports: [
               BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
@@ -82,9 +84,10 @@ import { LessonTwentyEightComponent } from './lesson-twenty-eight/lesson-twenty-
                                      {path: 'lesson-twenty-one', component: LessonTwentyOneComponent},
                                      {path: 'lesson-twenty-two', component: LessonTwentyTwoComponent},
                                      {path: 'lesson-twenty-three', component: LessonTwentyThreeComponent},
-                                     {path: 'lesson-twenty-seven', component: LessonTwentySevenComponent },
-                                     {path: 'lesson-twenty-eight', component: LessonTwentyEightComponent },
-                                     {path: 'lesson-twenty-nine', component: LessonTwentyNineComponent}
+                                     {path: 'lesson-twenty-seven', component: LessonTwentySevenComponent},
+                                     {path: 'lesson-twenty-eight', component: LessonTwentyEightComponent},
+                                     {path: 'lesson-twenty-nine', component: LessonTwentyNineComponent},
+                                     {path: 'lesson-thirty', component: LessonThirtyComponent}
                                    ])
             ],
             providers: [],
