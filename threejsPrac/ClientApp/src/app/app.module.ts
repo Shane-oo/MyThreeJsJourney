@@ -31,6 +31,7 @@ import { LessonTwentySevenComponent } from './lesson-twenty-seven/lesson-twenty-
 import { LessonTwentyNineComponent } from './lesson-twenty-nine/lesson-twenty-nine.component';
 import { LessonTwentyEightComponent } from './lesson-twenty-eight/lesson-twenty-eight.component';
 import { LessonThirtyComponent } from './lesson-thirty/lesson-thirty.component';
+import { PractiseComponent } from './practise/practise.component';
 
 @NgModule({
             declarations: [
@@ -56,7 +57,11 @@ import { LessonThirtyComponent } from './lesson-thirty/lesson-thirty.component';
               LessonTwentyOneComponent,
               LessonTwentyTwoComponent,
               LessonTwentyThreeComponent,
-              LessonThirtyComponent
+              LessonTwentySevenComponent,
+              LessonTwentyEightComponent,
+              LessonTwentyNineComponent ,
+              LessonThirtyComponent,
+              PractiseComponent
             ],
             imports: [
               BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
@@ -64,6 +69,7 @@ import { LessonThirtyComponent } from './lesson-thirty/lesson-thirty.component';
               FormsModule,
               RouterModule.forRoot([
                                      {path: '', component: HomeComponent, pathMatch: 'full'},
+                                     {path: 'practise', component: PractiseComponent},
                                      {path: 'lesson-four', component: LessonFourComponent},
                                      {path: 'template', component: TemplateComponent},
                                      {path: 'lesson-five', component: LessonFiveComponent},
