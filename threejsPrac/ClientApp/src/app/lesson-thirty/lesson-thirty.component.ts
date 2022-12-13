@@ -35,7 +35,7 @@ export class LessonThirtyComponent implements OnInit, AfterViewInit {
   // Initialise camera variables
   // Initialise renderer
   private renderer!: THREE.WebGLRenderer;
-  private pixelRatio:number = 1;
+  private pixelRatio: number = 1;
   // Initialise scene
   private scene!: THREE.Scene;
 
@@ -61,14 +61,18 @@ export class LessonThirtyComponent implements OnInit, AfterViewInit {
                                                                       vertexShader: vertexShader,
                                                                       fragmentShader: fragmentShader,
                                                                       uniforms: {
-                                                                        uSize: {value: 8 * this.pixelRatio}
+                                                                        uSize: {value: 30 * this.pixelRatio},
+                                                                        uTime: {value: 0}
                                                                       }
                                                                     });
 
   private points: THREE.Points = new THREE.Points(this.geometry, this.material);
+
   private positions = new Float32Array(this.parameters.count * 3);
   private colors = new Float32Array(this.parameters.count * 3);
   private scales = new Float32Array(this.parameters.count);
+
+  private randomness = new Float32Array(this.parameters.count * 3);
 
   private insideColor = new THREE.Color(this.parameters.insideColor);
   private outsideColor = new THREE.Color(this.parameters.outsideColor);
@@ -140,6 +144,11 @@ export class LessonThirtyComponent implements OnInit, AfterViewInit {
       const spinAngle = radius * this.parameters.spin;
       const branchAngle = (i % this.parameters.branches) / this.parameters.branches * Math.PI * 2;
 
+
+      this.positions[i3] = Math.cos(branchAngle) * radius;
+      this.positions[i3 + 1] = 0;
+      this.positions[i3 + 2] = Math.sin(branchAngle) * radius;
+
       const randomX = Math.pow(Math.random(), this.parameters.randomnessPower)
                       * (Math.random() < 0.5 ? 1 : -1)
                       * this.parameters.randomness
@@ -153,10 +162,10 @@ export class LessonThirtyComponent implements OnInit, AfterViewInit {
                       * this.parameters.randomness
                       * radius;
 
+      this.randomness[i3] = randomX;
+      this.randomness[i3 + 1] = randomY;
+      this.randomness[i3 + 2] = randomZ;
 
-      this.positions[i3] = Math.cos(branchAngle) * radius + randomX;
-      this.positions[i3 + 1] = randomY;
-      this.positions[i3 + 2] = Math.sin(branchAngle) * radius + randomZ;
 
       const mixedColor = this.insideColor.clone();
       mixedColor.lerp(this.outsideColor, radius / this.parameters.radius);
@@ -168,9 +177,10 @@ export class LessonThirtyComponent implements OnInit, AfterViewInit {
       this.scales[i] = Math.random();
     }
     this.geometry.setAttribute('position', new THREE.BufferAttribute(this.positions, 3));
-
     this.geometry.setAttribute('color', new THREE.BufferAttribute(this.colors, 3));
-    this.geometry.setAttribute('aScale', new THREE.BufferAttribute(this.scales, 3));
+
+    this.geometry.setAttribute('aScale', new THREE.BufferAttribute(this.scales, 1));
+    this.geometry.setAttribute('aRandomness', new THREE.BufferAttribute(this.randomness, 3));
 
     this.scene.add(this.points);
   };
@@ -215,7 +225,7 @@ export class LessonThirtyComponent implements OnInit, AfterViewInit {
  *
  */
   private modifyCamera() {
-    this.camera.position.set(1, 1, 1);
+    this.camera.position.set(3, 3, 3);
 
   }
 
@@ -313,9 +323,8 @@ export class LessonThirtyComponent implements OnInit, AfterViewInit {
     const deltaTime = elapsedTime - this.oldElapsedTime;
     this.oldElapsedTime = elapsedTime;
 
-    // Update Water
     // Update Material
-
+    this.material.uniforms.uTime.value = elapsedTime;
     // Update Camera
 
 
