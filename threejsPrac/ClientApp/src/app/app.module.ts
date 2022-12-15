@@ -30,6 +30,10 @@ import { LessonTwentyThreeComponent } from './lesson-twenty-three/lesson-twenty-
 import { LessonTwentySevenComponent } from './lesson-twenty-seven/lesson-twenty-seven.component';
 import { LessonTwentyNineComponent } from './lesson-twenty-nine/lesson-twenty-nine.component';
 import { LessonTwentyEightComponent } from './lesson-twenty-eight/lesson-twenty-eight.component';
+import { LessonThirtyComponent } from './lesson-thirty/lesson-thirty.component';
+import { PractiseComponent } from './practise/practise.component';
+import { LessonThirtyOneComponent } from './lesson-thirty-one/lesson-thirty-one.component';
+import { LessonThirtyTwoComponent } from './lesson-thirty-two/lesson-thirty-two.component';
 
 @NgModule({
             declarations: [
@@ -54,7 +58,14 @@ import { LessonTwentyEightComponent } from './lesson-twenty-eight/lesson-twenty-
               LessonTwentyComponent,
               LessonTwentyOneComponent,
               LessonTwentyTwoComponent,
-              LessonTwentyThreeComponent
+              LessonTwentyThreeComponent,
+              LessonTwentySevenComponent,
+              LessonTwentyEightComponent,
+              LessonTwentyNineComponent,
+              LessonThirtyComponent,
+              PractiseComponent,
+              LessonThirtyOneComponent,
+              LessonThirtyTwoComponent
             ],
             imports: [
               BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
@@ -62,6 +73,7 @@ import { LessonTwentyEightComponent } from './lesson-twenty-eight/lesson-twenty-
               FormsModule,
               RouterModule.forRoot([
                                      {path: '', component: HomeComponent, pathMatch: 'full'},
+                                     {path: 'practise', component: PractiseComponent},
                                      {path: 'lesson-four', component: LessonFourComponent},
                                      {path: 'template', component: TemplateComponent},
                                      {path: 'lesson-five', component: LessonFiveComponent},
@@ -82,9 +94,11 @@ import { LessonTwentyEightComponent } from './lesson-twenty-eight/lesson-twenty-
                                      {path: 'lesson-twenty-one', component: LessonTwentyOneComponent},
                                      {path: 'lesson-twenty-two', component: LessonTwentyTwoComponent},
                                      {path: 'lesson-twenty-three', component: LessonTwentyThreeComponent},
-                                     {path: 'lesson-twenty-seven', component: LessonTwentySevenComponent },
-                                     {path: 'lesson-twenty-eight', component: LessonTwentyEightComponent },
-                                     {path: 'lesson-twenty-nine', component: LessonTwentyNineComponent}
+                                     {path: 'lesson-twenty-seven', component: LessonTwentySevenComponent},
+                                     {path: 'lesson-twenty-eight', component: LessonTwentyEightComponent},
+                                     {path: 'lesson-twenty-nine', component: LessonTwentyNineComponent},
+                                     {path: 'lesson-thirty', component: LessonThirtyComponent},
+                                     {path: 'lesson-thirty-one', component: LessonThirtyOneComponent}
                                    ])
             ],
             providers: [],
