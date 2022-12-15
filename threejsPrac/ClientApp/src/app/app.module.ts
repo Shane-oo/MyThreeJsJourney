@@ -33,6 +33,7 @@ import { LessonTwentyEightComponent } from './lesson-twenty-eight/lesson-twenty-
 import { LessonThirtyComponent } from './lesson-thirty/lesson-thirty.component';
 import { PractiseComponent } from './practise/practise.component';
 import { LessonThirtyOneComponent } from './lesson-thirty-one/lesson-thirty-one.component';
+import { LessonThirtyTwoComponent } from './lesson-thirty-two/lesson-thirty-two.component';
 
 @NgModule({
             declarations: [
@@ -63,7 +64,8 @@ import { LessonThirtyOneComponent } from './lesson-thirty-one/lesson-thirty-one.
               LessonTwentyNineComponent,
               LessonThirtyComponent,
               PractiseComponent,
-              LessonThirtyOneComponent
+              LessonThirtyOneComponent,
+              LessonThirtyTwoComponent
             ],
             imports: [
               BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
