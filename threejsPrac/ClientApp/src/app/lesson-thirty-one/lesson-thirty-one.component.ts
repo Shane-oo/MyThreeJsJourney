@@ -4,7 +4,11 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 //@ts-ignore
 import modifiedVertexShader from '../../assets/shaders/modifiedMaterials/vertex.glsl';
 //@ts-ignore
+import depthMaterialVertexShader from '../../assets/shaders/modifiedMaterials/depthMaterialVertex.glsl';
+//@ts-ignore
 import modifiedCommon from '../../assets/shaders/modifiedMaterials/modifiedCommon.glsl';
+//@ts-ignore
+import modifiedNormalVertex from '../../assets/shaders/modifiedMaterials/modifiedNormalVertex.glsl';
 import * as lilGui from 'lil-gui';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
@@ -66,6 +70,10 @@ export class LessonThirtyOneComponent implements OnInit, AfterViewInit {
                                                       map: this.mapTexture,
                                                       normalMap: this.normalTexture
                                                     });
+
+  private depthMaterial = new THREE.MeshDepthMaterial({
+                                                        depthPacking: THREE.RGBADepthPacking
+                                                      });
 
   // Lights
   private directionalLight = new THREE.DirectionalLight('#ffffff', 3);
@@ -153,6 +161,7 @@ export class LessonThirtyOneComponent implements OnInit, AfterViewInit {
                            const mesh = gltf.scene.children[0] as THREE.Mesh;
                            mesh.rotation.y = Math.PI * 0.5;
                            mesh.material = this.material;
+                           mesh.customDepthMaterial = this.depthMaterial;
                            this.scene.add(mesh);
 
                            this.updateAllMaterials();
@@ -190,8 +199,20 @@ export class LessonThirtyOneComponent implements OnInit, AfterViewInit {
       shader.vertexShader = shader.vertexShader.replace('#include <common>',
                                                         modifiedCommon);
 
+      shader.vertexShader = shader.vertexShader.replace('#include <beginnormal_vertex>',
+                                                        modifiedNormalVertex);
+
       shader.vertexShader = shader.vertexShader.replace('#include <begin_vertex>',
                                                         modifiedVertexShader);
+    };
+
+
+    this.depthMaterial.onBeforeCompile = (shader) => {
+      shader.uniforms.uTime = this.customUniforms.uTime;
+      shader.vertexShader = shader.vertexShader.replace('#include <common>',
+                                                        modifiedCommon);
+      shader.vertexShader = shader.vertexShader.replace('#include <begin_vertex>',
+                                                        depthMaterialVertexShader);
     };
   }
 
