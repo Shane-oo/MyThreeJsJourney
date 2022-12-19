@@ -98,7 +98,8 @@ import { LessonThirtyTwoComponent } from './lesson-thirty-two/lesson-thirty-two.
                                      {path: 'lesson-twenty-eight', component: LessonTwentyEightComponent},
                                      {path: 'lesson-twenty-nine', component: LessonTwentyNineComponent},
                                      {path: 'lesson-thirty', component: LessonThirtyComponent},
-                                     {path: 'lesson-thirty-one', component: LessonThirtyOneComponent}
+                                     {path: 'lesson-thirty-one', component: LessonThirtyOneComponent},
+                                     {path: 'lesson-thirty-two', component: LessonThirtyTwoComponent}
                                    ])
             ],
             providers: [],

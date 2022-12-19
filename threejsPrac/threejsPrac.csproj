@@ -182,6 +182,7 @@
     <Folder Include="ClientApp\src\assets\images\environmentMaps2" />
     <Folder Include="ClientApp\src\assets\images\gradients" />
     <Folder Include="ClientApp\src\assets\images\matcaps" />
+    <Folder Include="ClientApp\src\assets\images\postProcessing" />
     <Folder Include="ClientApp\src\assets\sounds" />
   </ItemGroup>
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
