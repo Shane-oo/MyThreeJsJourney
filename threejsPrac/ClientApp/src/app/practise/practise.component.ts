@@ -2,6 +2,8 @@ import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild }
 import * as THREE from 'three';
 import * as lilGui from 'lil-gui';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
 
 @Component({
              selector: 'app-practise',
@@ -14,9 +16,6 @@ export class PractiseComponent implements OnInit, AfterViewInit {
    *
    */
   public clock = new THREE.Clock();
-  // gui
-  private gui = new lilGui.GUI({width: 200});
-
   private width = window.innerWidth;
 
   //test mesh
@@ -24,25 +23,49 @@ export class PractiseComponent implements OnInit, AfterViewInit {
   // Get Canvas
   @ViewChild('canvas')
   private canvasRef!: ElementRef;
-  private camera = new THREE.PerspectiveCamera(75, this.width / this.height, 0.1, 100);
+  private camera = new THREE.PerspectiveCamera(30, this.width / this.height, 0.1, 100);
   private controls!: OrbitControls;
 
   // Initialise global variables
   // Initialise camera variables
   // Initialise renderer
   private renderer!: THREE.WebGLRenderer;
-  private pixelRatio: number = 1;
   // Initialise scene
   private scene!: THREE.Scene;
 
   //Initialise object variables
   private oldElapsedTime = 0;
 
-  private geometry: THREE.BufferGeometry = new THREE.BufferGeometry();
-  private material: THREE.MeshStandardMaterial = new THREE.MeshStandardMaterial({color:'red'});
-  private mesh: THREE.Mesh = new THREE.Mesh(this.geometry,this.material);
+  // textures
+  private textureLoader = new THREE.TextureLoader();
+  private gltfLoader = new GLTFLoader();
+
+
+  // material
+  // Textures
+
+
+  // Lights
+  private hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.6);
+  private directionalLight = new THREE.DirectionalLight('#ffffff', 3);
+
+  // gui
+  private gui = new lilGui.GUI({width: 200});
+
+
+  // effect Uniforms
+  private customUniforms = {
+    tDiffuse: {value: null},
+    strength: {value: 0},
+    height: {value: 1},
+    aspectRatio: {value: 1},
+    cylindricalRatio: {value: 1}
+  };
+
+
 
   constructor() {
+
 
   }
 
@@ -89,15 +112,34 @@ export class PractiseComponent implements OnInit, AfterViewInit {
     this.startRenderingLoop();
   }
 
-  ngOnDestroy() {
-    this.gui.destroy();
-  }
-
+  // Update All Materials
+  private updateAllMaterials = () => {
+    this.scene.traverse((child) => {
+      if(child instanceof THREE.Mesh && child.material instanceof THREE.MeshStandardMaterial) {
+        child.material.envMapIntensity = 1;
+        child.material.needsUpdate = true;
+        child.castShadow = true;
+        child.receiveShadow = true;
+      }
+    });
+  };
 
   /*
    * Loading Manager Functions
   */
   private setLoadingManager() {
+  }
+
+  private LoadModels() {
+    this.gltfLoader.load('../../assets/models/houseModels/testingModelDoNotPublish.gltf',
+                         (gltf) => {
+                           //Model
+                           // const mesh = gltf.scene.children as THREE.Mesh;
+
+                           this.scene.add(gltf.scene);
+
+                           this.updateAllMaterials();
+                         });
   }
 
   /*
@@ -114,6 +156,12 @@ export class PractiseComponent implements OnInit, AfterViewInit {
   */
   private modifyObjects() {
 
+
+    this.hemiLight.color.setHSL(0.6, 1, 0.6);
+    this.hemiLight.groundColor.setHSL(0.095, 1, 0.75);
+    this.hemiLight.position.set(0, 50, 0);
+
+    this.directionalLight.position.set(-1.28, 1.4, 1);
   }
 
   private modifyPhysics() {
@@ -126,7 +174,6 @@ export class PractiseComponent implements OnInit, AfterViewInit {
  */
   private modifyScene() {
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color('black');
   }
 
   /*
@@ -134,7 +181,7 @@ export class PractiseComponent implements OnInit, AfterViewInit {
  *
  */
   private modifyCamera() {
-    this.camera.position.set(1, 1, 1);
+    this.camera.position.set(3.220455254532799, 2.7790831118327652, 0.07456144498879909);
 
   }
 
@@ -151,9 +198,13 @@ export class PractiseComponent implements OnInit, AfterViewInit {
      * Add Debug Tweaks
      *
     */
-
   private modifyDebugGUI() {
-
+    this.gui.add(this.camera, 'fov')
+        .min(30)
+        .max(100)
+        .step(1).onChange(() => {
+      this.camera.updateProjectionMatrix();
+    });
 
   }
 
@@ -164,6 +215,7 @@ export class PractiseComponent implements OnInit, AfterViewInit {
   private createScene() {
     // Loading Manager
     this.setLoadingManager();
+
     // Geometry
     this.setGeometryAttributes();
     // Objects
@@ -174,16 +226,19 @@ export class PractiseComponent implements OnInit, AfterViewInit {
     this.modifyPhysics();
     // Camera
     this.modifyCamera();
-
+    // Models
+    this.LoadModels();
     //Add Objects to the scene
 
     this.scene.add(this.camera);
-    this.scene.add(this.mesh);
+    this.scene.add(this.hemiLight);
+    this.scene.add(this.directionalLight);
     // Call add Controls to canvas
     this.modifyControls();
 
     // Add the debug tweaks to the GUI
     this.modifyDebugGUI();
+
 
   }
 
@@ -193,8 +248,6 @@ export class PractiseComponent implements OnInit, AfterViewInit {
     const deltaTime = elapsedTime - this.oldElapsedTime;
     this.oldElapsedTime = elapsedTime;
 
-    // Update Water
-    // Update Material
 
     // Update Camera
 
@@ -203,7 +256,7 @@ export class PractiseComponent implements OnInit, AfterViewInit {
     this.controls.update();
     // Update physics world
 
-
+    //console.log(this.camera.position)
   }
 
   /*
@@ -216,10 +269,15 @@ export class PractiseComponent implements OnInit, AfterViewInit {
 
     this.renderer = new THREE.WebGLRenderer({canvas: this.canvas});
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    this.pixelRatio = this.renderer.getPixelRatio();
 
     this.renderer.setSize(this.width, this.height);
-
+    // Activate shadow map
+    this.renderer.shadowMap.enabled = true;
+    this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    this.renderer.physicallyCorrectLights = true;
+    this.renderer.outputEncoding = THREE.sRGBEncoding;
+    this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    this.renderer.toneMappingExposure = 1;
     // Must change component
     let component: PractiseComponent = this;
     (function render() {
@@ -234,4 +292,3 @@ export class PractiseComponent implements OnInit, AfterViewInit {
   }
 
 }
-
