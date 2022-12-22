@@ -229,7 +229,7 @@ export class LessonThirtyTwoComponent implements OnInit, AfterViewInit {
       this.effectComposer.addPass(new SMAAPass(this.width, this.height));
     }
 
-    this.displacementPass.renderToScreen = true;
+ //   this.displacementPass.renderToScreen = true;
   }
 
   /*
