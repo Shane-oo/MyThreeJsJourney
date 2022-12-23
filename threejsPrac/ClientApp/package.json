@@ -27,7 +27,7 @@
     "cannon": "^0.6.2",
     "dat.gui": "^0.7.9",
     "glslify-loader": "^2.0.0",
-    "gsap": "^3.10.4",
+    "gsap": "^3.11.4",
     "jquery": "^3.5.1",
     "lil-gui": "^0.16.1",
     "oidc-client": "^1.11.5",
