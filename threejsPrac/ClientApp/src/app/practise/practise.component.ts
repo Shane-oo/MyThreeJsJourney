@@ -4,6 +4,13 @@ import * as lilGui from 'lil-gui';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
+//@ts-ignore
+import distortionVertex from '../../assets/shaders/fishEye/fishEyeVertex.glsl';
+//@ts-ignore
+import distortionFragment from '../../assets/shaders/fishEye/fishEyeFragment.glsl';
+
+import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass';
 
 @Component({
              selector: 'app-practise',
@@ -23,7 +30,7 @@ export class PractiseComponent implements OnInit, AfterViewInit {
   // Get Canvas
   @ViewChild('canvas')
   private canvasRef!: ElementRef;
-  private camera = new THREE.PerspectiveCamera(30, this.width / this.height, 0.1, 100);
+  private camera = new THREE.PerspectiveCamera(100, this.width / this.height, 0.1, 100);
   private controls!: OrbitControls;
 
   // Initialise global variables
@@ -206,8 +213,61 @@ export class PractiseComponent implements OnInit, AfterViewInit {
       this.camera.updateProjectionMatrix();
     });
 
-  }
 
+
+  }
+  private effectComposer!:EffectComposer;
+  private renderPass!:RenderPass;
+
+  private DistortionShader = {
+    uniforms: {
+      tDiffuse: {value: null},
+      strength: {value: 0},
+      height: {value: 1},
+      aspectRatio: {value:1},
+      cylindricalRatio: {value:1}
+    },
+    vertexShader: distortionVertex,
+    fragmentShader: distortionFragment
+  };
+  private distortionPass = new ShaderPass(this.DistortionShader);
+
+
+  private setEffectComposer() {
+
+
+    this.effectComposer = new EffectComposer(this.renderer);
+    this.effectComposer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    this.effectComposer.setSize(this.width, this.height);
+
+    this.renderPass = new RenderPass(this.scene, this.camera);
+
+    this.effectComposer.addPass(this.renderPass);
+
+    // Setup distortion effect;
+
+    let horizontalFov = this.camera.fov;
+    let strength = 0.5;
+    let cylindricalRatio = 2;
+    let height = Math.tan(THREE.MathUtils.degToRad(horizontalFov) / 2) / this.camera.aspect;
+
+    this.camera.fov = Math.atan(height) * 2 * 180 / 3.142;
+    this.camera.updateProjectionMatrix();
+
+    this.distortionPass.material.uniforms.strength.value = strength;
+    this.distortionPass.material.uniforms.height.value = height;
+    this.distortionPass.material.uniforms.aspectRatio.value = this.camera.aspect;
+    this.distortionPass.material.uniforms.cylindricalRatio.value = cylindricalRatio;
+
+
+    this.effectComposer.addPass(this.distortionPass);
+    this.distortionPass.renderToScreen = true;
+
+
+
+    //this.dotScreenPass.enabled = false;
+   // this.effectComposer.addPass(this.dotScreenPass);
+  }
   /*
   * Create the scene
   *
@@ -280,6 +340,10 @@ export class PractiseComponent implements OnInit, AfterViewInit {
     this.renderer.toneMappingExposure = 1;
     // Must change component
     let component: PractiseComponent = this;
+
+    // Post Processing
+    this.setEffectComposer();
+
     (function render() {
       //console.log('tick');
       requestAnimationFrame(render);

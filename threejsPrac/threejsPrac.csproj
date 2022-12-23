@@ -176,6 +176,11 @@
     <None Remove="ClientApp\dist\assets\fonts\Licenses\Web Font EULA 1.7.1.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ClientApp\src\app\advanced-techniques" />
+    <Folder Include="ClientApp\src\app\basics" />
+    <Folder Include="ClientApp\src\app\classic-techniques" />
+    <Folder Include="ClientApp\src\app\extra" />
+    <Folder Include="ClientApp\src\app\shaders" />
     <Folder Include="ClientApp\src\assets\images\" />
     <Folder Include="ClientApp\src\assets\images\bakedShadows" />
     <Folder Include="ClientApp\src\assets\images\environmentMaps" />

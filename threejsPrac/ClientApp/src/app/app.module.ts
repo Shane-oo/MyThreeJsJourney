@@ -7,35 +7,36 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { LessonFourComponent } from './lesson-four/lesson-four.component';
+import { LessonFourComponent } from './basics/lesson-four/lesson-four.component';
 import { TemplateComponent } from './template/template.component';
-import { LessonFiveComponent } from './lesson-five/lesson-five.component';
-import { LessonSixComponent } from './lesson-six/lesson-six.component';
-import { LessonSevenComponent } from './lesson-seven/lesson-seven.component';
-import { LessonEightComponent } from './lesson-eight/lesson-eight.component';
-import { LessonNineComponent } from './lesson-nine/lesson-nine.component';
-import { LessonTenComponent } from './lesson-ten/lesson-ten.component';
-import { LessonElevenComponent } from './lesson-eleven/lesson-eleven.component';
-import { LessonTwelveComponent } from './lesson-twelve/lesson-twelve.component';
-import { LessonThirteenComponent } from './lesson-thirteen/lesson-thirteen.component';
-import { LessonFifteenComponent } from './lesson-fifteen/lesson-fifteen.component';
-import { LessonSixteenComponent } from './lesson-sixteen/lesson-sixteen.component';
-import { LessonEighteenComponent } from './lesson-eighteen/lesson-eighteen.component';
-import { LessonSeventeenComponent } from './lesson-seventeen/lesson-seventeen.component';
-import { LessonNineteenComponent } from './lesson-nineteen/lesson-nineteen.component';
-import { LessonTwentyComponent } from './lesson-twenty/lesson-twenty.component';
-import { LessonTwentyOneComponent } from './lesson-twenty-one/lesson-twenty-one.component';
-import { LessonTwentyTwoComponent } from './lesson-twenty-two/lesson-twenty-two.component';
-import { LessonTwentyThreeComponent } from './lesson-twenty-three/lesson-twenty-three.component';
-import { LessonTwentySevenComponent } from './lesson-twenty-seven/lesson-twenty-seven.component';
-import { LessonTwentyNineComponent } from './lesson-twenty-nine/lesson-twenty-nine.component';
-import { LessonTwentyEightComponent } from './lesson-twenty-eight/lesson-twenty-eight.component';
-import { LessonThirtyComponent } from './lesson-thirty/lesson-thirty.component';
+import { LessonFiveComponent } from './basics/lesson-five/lesson-five.component';
+import { LessonSixComponent } from './basics/lesson-six/lesson-six.component';
+import { LessonSevenComponent } from './basics/lesson-seven/lesson-seven.component';
+import { LessonEightComponent } from './basics/lesson-eight/lesson-eight.component';
+import { LessonNineComponent } from './basics/lesson-nine/lesson-nine.component';
+import { LessonTenComponent } from './basics/lesson-ten/lesson-ten.component';
+import { LessonElevenComponent } from './basics/lesson-eleven/lesson-eleven.component';
+import { LessonTwelveComponent } from './basics/lesson-twelve/lesson-twelve.component';
+import { LessonThirteenComponent } from './basics/lesson-thirteen/lesson-thirteen.component';
+import { LessonFifteenComponent } from './classic-techniques/lesson-fifteen/lesson-fifteen.component';
+import { LessonSixteenComponent } from './classic-techniques/lesson-sixteen/lesson-sixteen.component';
+import { LessonEighteenComponent } from './classic-techniques/lesson-eighteen/lesson-eighteen.component';
+import { LessonSeventeenComponent } from './classic-techniques/lesson-seventeen/lesson-seventeen.component';
+import { LessonNineteenComponent } from './classic-techniques/lesson-nineteen/lesson-nineteen.component';
+import { LessonTwentyComponent } from './classic-techniques/lesson-twenty/lesson-twenty.component';
+import { LessonTwentyOneComponent } from './classic-techniques/lesson-twenty-one/lesson-twenty-one.component';
+import { LessonTwentyTwoComponent } from './advanced-techniques/lesson-twenty-two/lesson-twenty-two.component';
+import { LessonTwentyThreeComponent } from './advanced-techniques/lesson-twenty-three/lesson-twenty-three.component';
+import { LessonTwentySevenComponent } from './shaders/lesson-twenty-seven/lesson-twenty-seven.component';
+import { LessonTwentyNineComponent } from './shaders/lesson-twenty-nine/lesson-twenty-nine.component';
+import { LessonTwentyEightComponent } from './shaders/lesson-twenty-eight/lesson-twenty-eight.component';
+import { LessonThirtyComponent } from './shaders/lesson-thirty/lesson-thirty.component';
 import { PractiseComponent } from './practise/practise.component';
-import { LessonThirtyOneComponent } from './lesson-thirty-one/lesson-thirty-one.component';
-import { LessonThirtyTwoComponent } from './lesson-thirty-two/lesson-thirty-two.component';
-import { LessonThirtyThreeComponent } from './lesson-thirty-three/lesson-thirty-three.component';
-import { LessonThirtyFourComponent } from './lesson-thirty-four/lesson-thirty-four.component';
+import { LessonThirtyOneComponent } from './shaders/lesson-thirty-one/lesson-thirty-one.component';
+import { LessonThirtyTwoComponent } from './extra/lesson-thirty-two/lesson-thirty-two.component';
+import { LessonThirtyThreeComponent } from './extra/lesson-thirty-three/lesson-thirty-three.component';
+import { LessonThirtyFourComponent } from './extra/lesson-thirty-four/lesson-thirty-four.component';
+import { LessonThirtyFiveComponent } from './extra/lesson-thirty-five/lesson-thirty-five.component';
 
 @NgModule({
             declarations: [
@@ -69,7 +70,8 @@ import { LessonThirtyFourComponent } from './lesson-thirty-four/lesson-thirty-fo
               LessonThirtyOneComponent,
               LessonThirtyTwoComponent,
               LessonThirtyThreeComponent,
-              LessonThirtyFourComponent
+              LessonThirtyFourComponent,
+              LessonThirtyFiveComponent
             ],
             imports: [
               BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
@@ -105,7 +107,8 @@ import { LessonThirtyFourComponent } from './lesson-thirty-four/lesson-thirty-fo
                                      {path: 'lesson-thirty-one', component: LessonThirtyOneComponent},
                                      {path: 'lesson-thirty-two', component: LessonThirtyTwoComponent},
                                      {path: 'lesson-thirty-three', component: LessonThirtyThreeComponent},
-                                     {path: 'lesson-thirty-four', component: LessonThirtyFourComponent}
+                                     {path: 'lesson-thirty-four', component: LessonThirtyFourComponent},
+                                     {path: 'lesson-thirty-five', component: LessonThirtyFiveComponent}
                                    ])
             ],
             providers: [],
