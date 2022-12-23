@@ -35,6 +35,7 @@ import { PractiseComponent } from './practise/practise.component';
 import { LessonThirtyOneComponent } from './lesson-thirty-one/lesson-thirty-one.component';
 import { LessonThirtyTwoComponent } from './lesson-thirty-two/lesson-thirty-two.component';
 import { LessonThirtyThreeComponent } from './lesson-thirty-three/lesson-thirty-three.component';
+import { LessonThirtyFourComponent } from './lesson-thirty-four/lesson-thirty-four.component';
 
 @NgModule({
             declarations: [
@@ -67,7 +68,8 @@ import { LessonThirtyThreeComponent } from './lesson-thirty-three/lesson-thirty-
               PractiseComponent,
               LessonThirtyOneComponent,
               LessonThirtyTwoComponent,
-              LessonThirtyThreeComponent
+              LessonThirtyThreeComponent,
+              LessonThirtyFourComponent
             ],
             imports: [
               BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
@@ -102,7 +104,8 @@ import { LessonThirtyThreeComponent } from './lesson-thirty-three/lesson-thirty-
                                      {path: 'lesson-thirty', component: LessonThirtyComponent},
                                      {path: 'lesson-thirty-one', component: LessonThirtyOneComponent},
                                      {path: 'lesson-thirty-two', component: LessonThirtyTwoComponent},
-                                     {path: 'lesson-thirty-three', component: LessonThirtyThreeComponent}
+                                     {path: 'lesson-thirty-three', component: LessonThirtyThreeComponent},
+                                     {path: 'lesson-thirty-four', component: LessonThirtyFourComponent}
                                    ])
             ],
             providers: [],
