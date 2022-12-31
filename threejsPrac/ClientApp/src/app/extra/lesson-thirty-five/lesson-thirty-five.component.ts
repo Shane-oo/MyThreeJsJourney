@@ -10,11 +10,11 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import * as lilGui from 'lil-gui';
 
 @Component({
-  selector: 'app-lesson-thirty-five',
-  templateUrl: './lesson-thirty-five.component.html',
-  styleUrls: ['./lesson-thirty-five.component.css']
-})
-export class LessonThirtyFiveComponent  implements OnInit, AfterViewInit {
+             selector: 'app-lesson-thirty-five',
+             templateUrl: './lesson-thirty-five.component.html',
+             styleUrls: ['./lesson-thirty-five.component.css']
+           })
+export class LessonThirtyFiveComponent implements OnInit, AfterViewInit {
   /*
    * Animate the cube
    *
@@ -31,6 +31,14 @@ export class LessonThirtyFiveComponent  implements OnInit, AfterViewInit {
   @ViewChild('canvas')
   private canvasRef!: ElementRef;
 
+  @ViewChild('pointZero')
+  private pointZeroElement!: ElementRef;
+
+  @ViewChild('pointOne')
+  private pointOneElement!: ElementRef;
+
+  @ViewChild('pointTwo')
+  private pointTwoElement!: ElementRef;
 
   private camera = new THREE.PerspectiveCamera(75, this.width / this.height, 0.1, 100);
   private controls!: OrbitControls;
@@ -61,13 +69,19 @@ export class LessonThirtyFiveComponent  implements OnInit, AfterViewInit {
                                                      });
   private overlay = new THREE.Mesh(this.overlayGeometry, this.overlayMaterial);
 
-
+  private sceneReady = false;
   // Loaders
   private loadingManager = new THREE.LoadingManager(() => {
                                                       gsap.delayedCall(0.5, () => {
                                                         gsap.to(this.overlayMaterial.uniforms.uAlpha, {duration: 3, value: 0, delay: 1});
                                                         this.loadingBar.classList.add('ended');
                                                         this.loadingBar.style.transform = '';
+
+
+                                                        setTimeout(() => {
+
+                                                          this.sceneReady = true;
+                                                        }, 2000);
                                                       });
 
                                                     },
@@ -93,6 +107,11 @@ export class LessonThirtyFiveComponent  implements OnInit, AfterViewInit {
                                                          'assets/images/environmentMaps/0/nz.jpg'
                                                        ]);
 
+  // Points Of Interest
+  private points: any;
+
+  // Raycaster
+  private raycaster = new THREE.Raycaster();
 
   // Lights
   private directionalLight = new THREE.DirectionalLight('#ffffff', 3);
@@ -114,6 +133,18 @@ export class LessonThirtyFiveComponent  implements OnInit, AfterViewInit {
 
   private get loadingBar(): HTMLDivElement {
     return this.loadingBarElement.nativeElement;
+  }
+
+  private get pointZero(): HTMLDivElement {
+    return this.pointZeroElement.nativeElement;
+  }
+
+  private get pointOne(): HTMLDivElement {
+    return this.pointOneElement.nativeElement;
+  }
+
+  private get pointTwo(): HTMLDivElement {
+    return this.pointTwoElement.nativeElement;
   }
 
   @HostListener('window:resize', ['$event'])
@@ -150,9 +181,24 @@ export class LessonThirtyFiveComponent  implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    // better way is to create the dom element in the javascript and add it to the html
+    // not get from html
+    this.points = [{
+      position: new THREE.Vector3(1.55, 0.3, -0.6),
+      element: this.pointZero
+    },
+      {
+        position: new THREE.Vector3(0.5, 0.8, -1.6),
+        element: this.pointOne
+      }, {
+        position: new THREE.Vector3(1.6, -1.3, -0.7),
+        element: this.pointTwo
+      }];
     // call needed functions
     this.createScene();
     this.startRenderingLoop();
+
+
   }
 
   // Update All Materials
@@ -181,7 +227,7 @@ export class LessonThirtyFiveComponent  implements OnInit, AfterViewInit {
     this.gltfLoader.load('assets/models/DamagedHelmet/glTF/DamagedHelmet.gltf',
                          (gltf) => {
                            //Model
-                           gltf.scene.scale.set(2.5,2.5, 2.5);
+                           gltf.scene.scale.set(2.5, 2.5, 2.5);
                            gltf.scene.rotation.y = Math.PI * 0.5;
                            this.scene.add(gltf.scene);
 
@@ -303,7 +349,40 @@ export class LessonThirtyFiveComponent  implements OnInit, AfterViewInit {
 
     // Update Controls
     this.controls.update();
-    // Update physics world
+
+    // Go Through Each Point
+    if(this.sceneReady) {
+      for(const point of this.points) {
+        const screenPosition = point.position.clone();
+        screenPosition.project(this.camera);
+
+        this.raycaster.setFromCamera(screenPosition, this.camera);
+        const intersects = this.raycaster.intersectObjects(this.scene.children, true);
+
+        if(intersects.length === 0) {
+          point.element.classList.add('visible');
+        } else {
+          const intersectionDistance = intersects[0].distance;
+          const pointDistance = point.position.distanceTo(this.camera.position);
+
+          if(intersectionDistance < pointDistance) {
+            point.element.classList.remove('visible');
+          } else {
+            point.element.classList.add('visible');
+
+          }
+
+        }
+
+        const translateX = screenPosition.x * this.width * 0.5;
+        const translateY = -screenPosition.y * this.height * 0.5;
+
+
+        point.element.style.transform = `translate(${translateX}px, ${translateY}px)`;
+
+
+      }
+    }
 
 
   }
