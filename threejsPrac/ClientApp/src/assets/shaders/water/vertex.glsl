@@ -12,7 +12,7 @@ uniform float uSmallIterations;
 varying float vElevation;
 
 
-#pragma glslify: perlinFunction = require(./perlin.glsl)
+#pragma glslify: perlinFunction = require(../perlin/perlin.glsl)
 
 void main() {
   vec4 modelPosition = modelMatrix * vec4(position, 1.0);

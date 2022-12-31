@@ -54,11 +54,21 @@ html, body {
   line-height: 40px;
   font-weight: 100;
   font-size: 14px;
+
+  cursor: help;
+
+  transform: scale(0.001, 0.001);
+  transition: transform 0.3s;
 }
 
 .point:hover .text {
   opacity: 1;
 }
+
+.point.visible .label {
+  transform: scale(1, 1);
+}
+
 
 .point .text {
   position: absolute;
@@ -77,5 +87,8 @@ html, body {
 
   /* ... */
   opacity: 0;
+  transition: opacity 0.3s;
+
+  pointer-events: none;
 }
 

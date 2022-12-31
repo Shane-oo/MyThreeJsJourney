@@ -180,6 +180,7 @@
     <Folder Include="ClientApp\src\app\basics" />
     <Folder Include="ClientApp\src\app\classic-techniques" />
     <Folder Include="ClientApp\src\app\extra" />
+    <Folder Include="ClientApp\src\app\portal-scene" />
     <Folder Include="ClientApp\src\app\shaders" />
     <Folder Include="ClientApp\src\assets\images\" />
     <Folder Include="ClientApp\src\assets\images\bakedShadows" />
@@ -188,6 +189,8 @@
     <Folder Include="ClientApp\src\assets\images\gradients" />
     <Folder Include="ClientApp\src\assets\images\matcaps" />
     <Folder Include="ClientApp\src\assets\images\postProcessing" />
+    <Folder Include="ClientApp\src\assets\loaders" />
+    <Folder Include="ClientApp\src\assets\models\portal" />
     <Folder Include="ClientApp\src\assets\sounds" />
   </ItemGroup>
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
