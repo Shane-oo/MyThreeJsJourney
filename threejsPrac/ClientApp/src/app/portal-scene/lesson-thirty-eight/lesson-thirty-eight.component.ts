@@ -52,7 +52,6 @@ export class LessonThirtyEightComponent implements OnInit, AfterViewInit {
 
   // Lights
 
-
   // gui
   private gui = new lilGui.GUI({width: 200});
   private debugObject = {
