@@ -132,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "threejsPrac"
+  "defaultProject": "threejsPrac",
+  "cli": {
+    "analytics": false
+  }
 }

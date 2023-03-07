@@ -38,6 +38,9 @@ import { LessonThirtyThreeComponent } from './extra/lesson-thirty-three/lesson-t
 import { LessonThirtyFourComponent } from './extra/lesson-thirty-four/lesson-thirty-four.component';
 import { LessonThirtyFiveComponent } from './extra/lesson-thirty-five/lesson-thirty-five.component';
 import { LessonThirtyEightComponent } from './portal-scene/lesson-thirty-eight/lesson-thirty-eight.component';
+import { RoofRoofierComponent } from './practise/roof-roofier/roof-roofier.component';
+import { SandComponent } from './practise/sand/sand.component';
+import { RoofComponent } from './practise/roof/roof.component';
 
 @NgModule({
             declarations: [
@@ -73,7 +76,10 @@ import { LessonThirtyEightComponent } from './portal-scene/lesson-thirty-eight/l
               LessonThirtyThreeComponent,
               LessonThirtyFourComponent,
               LessonThirtyFiveComponent,
-              LessonThirtyEightComponent
+              LessonThirtyEightComponent,
+              RoofRoofierComponent,
+              SandComponent,
+              RoofComponent
             ],
             imports: [
               BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
@@ -111,7 +117,10 @@ import { LessonThirtyEightComponent } from './portal-scene/lesson-thirty-eight/l
                                      {path: 'lesson-thirty-three', component: LessonThirtyThreeComponent},
                                      {path: 'lesson-thirty-four', component: LessonThirtyFourComponent},
                                      {path: 'lesson-thirty-five', component: LessonThirtyFiveComponent},
-                                     {path: 'lesson-thirty-eight', component: LessonThirtyEightComponent}
+                                     {path: 'lesson-thirty-eight', component: LessonThirtyEightComponent},
+                                     {path: 'roof-roofier', component: RoofRoofierComponent},
+                                     {path: 'sand', component: SandComponent},
+                                     {path: 'roof', component: RoofComponent}
                                    ])
             ],
             providers: [],
