@@ -41,6 +41,7 @@ import { LessonThirtyEightComponent } from './portal-scene/lesson-thirty-eight/l
 import { RoofRoofierComponent } from './practise/roof-roofier/roof-roofier.component';
 import { SandComponent } from './practise/sand/sand.component';
 import { RoofComponent } from './practise/roof/roof.component';
+import { TilesComponent } from './practise/tiles/tiles.component';
 
 @NgModule({
             declarations: [
@@ -79,7 +80,8 @@ import { RoofComponent } from './practise/roof/roof.component';
               LessonThirtyEightComponent,
               RoofRoofierComponent,
               SandComponent,
-              RoofComponent
+              RoofComponent,
+              TilesComponent
             ],
             imports: [
               BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
@@ -120,7 +122,8 @@ import { RoofComponent } from './practise/roof/roof.component';
                                      {path: 'lesson-thirty-eight', component: LessonThirtyEightComponent},
                                      {path: 'roof-roofier', component: RoofRoofierComponent},
                                      {path: 'sand', component: SandComponent},
-                                     {path: 'roof', component: RoofComponent}
+                                     {path: 'roof', component: RoofComponent},
+                                     {path: 'tiles', component: TilesComponent}
                                    ])
             ],
             providers: [],
