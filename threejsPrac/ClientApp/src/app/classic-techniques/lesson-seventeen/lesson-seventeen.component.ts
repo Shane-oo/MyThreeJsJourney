@@ -104,7 +104,7 @@ export class LessonSeventeenComponent implements OnInit, AfterViewInit {
   private graves = new THREE.Group();
   // Walls
   private walls = new THREE.Mesh(
-    new THREE.BoxBufferGeometry(4, 2.5, 4),
+    new THREE.BoxGeometry(4, 2.5, 4),
     new THREE.MeshStandardMaterial({
       map: this.bricksColorTexture,
       aoMap: this.bricksAmbientOcclusionTexture,
@@ -113,11 +113,11 @@ export class LessonSeventeenComponent implements OnInit, AfterViewInit {
     })
   );
   private roof = new THREE.Mesh(
-    new THREE.ConeBufferGeometry(3.5, 1, 4),
+    new THREE.ConeGeometry(3.5, 1, 4),
     new THREE.MeshStandardMaterial({color: '#b35f45'})
   );
   private door = new THREE.Mesh(
-    new THREE.PlaneBufferGeometry(2.2, 2.2, 100, 100),
+    new THREE.PlaneGeometry(2.2, 2.2, 100, 100),
     new THREE.MeshStandardMaterial({
       map: this.doorColorTexture,
       transparent: true,
@@ -131,19 +131,19 @@ export class LessonSeventeenComponent implements OnInit, AfterViewInit {
     })
   );
   // Add bushes and use the same geometry and same material
-  private bushGeometry = new THREE.SphereBufferGeometry(1, 16, 16);
+  private bushGeometry = new THREE.SphereGeometry(1, 16, 16);
   private bushMaterial = new THREE.MeshStandardMaterial({color: '#89c854'});
   private bush1 = new THREE.Mesh(this.bushGeometry, this.bushMaterial);
   private bush2 = new THREE.Mesh(this.bushGeometry, this.bushMaterial);
   private bush3 = new THREE.Mesh(this.bushGeometry, this.bushMaterial);
   private bush4 = new THREE.Mesh(this.bushGeometry, this.bushMaterial);
   // one geometry and material for all the grave meshes
-  private graveGeometry = new THREE.BoxBufferGeometry(0.6, 0.8, 0.2);
+  private graveGeometry = new THREE.BoxGeometry(0.6, 0.8, 0.2);
   private graveMaterial = new THREE.MeshStandardMaterial({color: '#b2b6b1'});
 
 
   private floor = new THREE.Mesh(
-    new THREE.PlaneBufferGeometry(20, 20),
+    new THREE.PlaneGeometry(20, 20),
     new THREE.MeshStandardMaterial({
       map: this.grassColorTexture,
       aoMap: this.grassAmbientOcclusionTexture,

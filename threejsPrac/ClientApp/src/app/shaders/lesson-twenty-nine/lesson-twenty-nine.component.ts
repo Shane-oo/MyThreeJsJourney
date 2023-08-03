@@ -48,7 +48,7 @@ export class LessonTwentyNineComponent implements OnInit, AfterViewInit {
   private textureLoader = new THREE.TextureLoader();
 
   // geometry
-  private waterGeometry = new THREE.PlaneBufferGeometry(3, 3, 512, 512);
+  private waterGeometry = new THREE.PlaneGeometry(3, 3, 512, 512);
 
   // material
   private waterMaterial = new THREE.ShaderMaterial({

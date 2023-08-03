@@ -42,7 +42,7 @@ export class LessonTwentyEightComponent implements OnInit, AfterViewInit {
   private textureLoader = new THREE.TextureLoader();
 
   // geometry
-  private geometry = new THREE.PlaneBufferGeometry(1, 1, 32, 32);
+  private geometry = new THREE.PlaneGeometry(1, 1, 32, 32);
 
   // material
   private material = new THREE.ShaderMaterial({

@@ -106,15 +106,15 @@ export class LessonTwelveComponent implements OnInit, AfterViewInit {
 
 
   private sphere = new THREE.Mesh(
-    new THREE.SphereBufferGeometry(0.5, 64, 64),
+    new THREE.SphereGeometry(0.5, 64, 64),
     this.material
   );
   private plane = new THREE.Mesh(
-    new THREE.PlaneBufferGeometry(1, 1,100,100),
+    new THREE.PlaneGeometry(1, 1,100,100),
     this.material
   );
   private torus = new THREE.Mesh(
-    new THREE.TorusBufferGeometry(0.3, 0.2, 64, 128),
+    new THREE.TorusGeometry(0.3, 0.2, 64, 128),
     this.material
   );
 
