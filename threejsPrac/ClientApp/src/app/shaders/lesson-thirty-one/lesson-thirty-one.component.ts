@@ -59,7 +59,7 @@ export class LessonThirtyOneComponent implements OnInit, AfterViewInit {
                                                        ]);
 
   // geometry
-  private geometry = new THREE.PlaneBufferGeometry(1, 1, 32, 32);
+  private geometry = new THREE.PlaneGeometry(1, 1, 32, 32);
 
   // material
   // Textures
@@ -80,7 +80,7 @@ export class LessonThirtyOneComponent implements OnInit, AfterViewInit {
 
   // Plane
   private plane = new THREE.Mesh(
-    new THREE.PlaneBufferGeometry(15, 15, 15),
+    new THREE.PlaneGeometry(15, 15, 15),
     new THREE.MeshStandardMaterial()
   );
   // gui

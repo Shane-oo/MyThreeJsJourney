@@ -83,17 +83,17 @@ export class LessonSixteenComponent implements OnInit, AfterViewInit {
 
 
   private sphere = new THREE.Mesh(
-    new THREE.SphereBufferGeometry(0.5, 32, 32),
+    new THREE.SphereGeometry(0.5, 32, 32),
     this.material
   );
 
   private plane = new THREE.Mesh(
-    new THREE.PlaneBufferGeometry(5, 5),
+    new THREE.PlaneGeometry(5, 5),
     this.material
   );
 
   private sphereShadow = new THREE.Mesh(
-    new THREE.PlaneBufferGeometry(1.5, 1.5),
+    new THREE.PlaneGeometry(1.5, 1.5),
     new THREE.MeshBasicMaterial({
       color: 0x000000,
       transparent: true,

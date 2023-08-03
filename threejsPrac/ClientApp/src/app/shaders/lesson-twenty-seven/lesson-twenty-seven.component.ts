@@ -43,7 +43,7 @@ export class LessonTwentySevenComponent implements OnInit, AfterViewInit {
   private flagTexture = this.textureLoader.load('../../assets/images/Flag_of_Australia.png');
 
   // geometry
-  private geometry = new THREE.PlaneBufferGeometry(1, 1, 32, 32);
+  private geometry = new THREE.PlaneGeometry(1, 1, 32, 32);
 
   // material
   private material = new THREE.ShaderMaterial({

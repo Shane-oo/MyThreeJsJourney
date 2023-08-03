@@ -114,7 +114,7 @@ export class RoofComponent implements OnInit, AfterViewInit {
                                                        aoMap: this.aoMap
                                                      });
   // Planes
-  private planeGeometry = new THREE.PlaneBufferGeometry(2, 2, 512, 512);
+  private planeGeometry = new THREE.PlaneGeometry(2, 2, 512, 512);
   private plane1 = new THREE.Mesh(this.planeGeometry, this.material1);
   private plane2 = new THREE.Mesh(this.planeGeometry, this.material2);
   private plane3 = new THREE.Mesh(this.planeGeometry, this.material3);

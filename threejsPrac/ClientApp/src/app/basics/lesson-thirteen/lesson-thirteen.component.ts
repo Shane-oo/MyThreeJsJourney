@@ -110,7 +110,7 @@ export class LessonThirteenComponent implements OnInit, AfterViewInit {
         const material = new THREE.MeshMatcapMaterial({matcap: this.matcapTexture});
         const text = new THREE.Mesh(textGeometry, material);
         this.scene.add(text);
-        const donutGeometry = new THREE.TorusBufferGeometry(0.2, 0.2, 20, 45);
+        const donutGeometry = new THREE.TorusGeometry(0.2, 0.2, 20, 45);
 
 
         for (let i = 0; i < 300; i++) {

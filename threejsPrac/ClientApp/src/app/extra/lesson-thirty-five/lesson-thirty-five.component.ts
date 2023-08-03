@@ -58,7 +58,7 @@ export class LessonThirtyFiveComponent implements OnInit, AfterViewInit {
 
 
   // Plane
-  private overlayGeometry = new THREE.PlaneBufferGeometry(2, 2, 1, 1);
+  private overlayGeometry = new THREE.PlaneGeometry(2, 2, 1, 1);
   private overlayMaterial = new THREE.ShaderMaterial({
                                                        uniforms: {
                                                          uAlpha: {value: 1}

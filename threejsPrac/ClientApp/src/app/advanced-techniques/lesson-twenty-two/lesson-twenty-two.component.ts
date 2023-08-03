@@ -291,7 +291,7 @@ export class LessonTwentyTwoComponent implements OnInit, AfterViewInit {
     body: new CANNON.Body()
   };
 
-  private sphereGeometry = new THREE.SphereBufferGeometry(1, 20, 20);
+  private sphereGeometry = new THREE.SphereGeometry(1, 20, 20);
   private sphereMaterial = new THREE.MeshStandardMaterial({
     metalness: 0.3,
     roughness: 0.4,
@@ -332,7 +332,7 @@ export class LessonTwentyTwoComponent implements OnInit, AfterViewInit {
   }
 
 
-  private boxGeometry = new THREE.BoxBufferGeometry(1, 1, 1);
+  private boxGeometry = new THREE.BoxGeometry(1, 1, 1);
   private boxMaterial = new THREE.MeshStandardMaterial({
     metalness: 0.3,
     roughness: 0.4,

@@ -86,7 +86,7 @@ export class LessonFifteenComponent implements OnInit, AfterViewInit {
 
 
   private sphere = new THREE.Mesh(
-    new THREE.SphereBufferGeometry(0.5, 32, 32),
+    new THREE.SphereGeometry(0.5, 32, 32),
     this.material
   );
   private cube = new THREE.Mesh(
@@ -94,7 +94,7 @@ export class LessonFifteenComponent implements OnInit, AfterViewInit {
     this.material
   );
   private torus = new THREE.Mesh(
-    new THREE.TorusBufferGeometry(0.3, 0.2, 32, 64),
+    new THREE.TorusGeometry(0.3, 0.2, 32, 64),
     this.material
   );
   private plane = new THREE.Mesh(
