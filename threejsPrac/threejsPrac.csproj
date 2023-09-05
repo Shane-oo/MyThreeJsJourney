@@ -182,7 +182,6 @@
     <Folder Include="ClientApp\src\app\extra" />
     <Folder Include="ClientApp\src\app\portal-scene" />
     <Folder Include="ClientApp\src\app\shaders" />
-    <Folder Include="ClientApp\src\assets\images\" />
     <Folder Include="ClientApp\src\assets\images\bakedShadows" />
     <Folder Include="ClientApp\src\assets\images\environmentMaps" />
     <Folder Include="ClientApp\src\assets\images\environmentMaps2" />

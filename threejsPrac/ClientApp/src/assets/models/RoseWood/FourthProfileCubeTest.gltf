@@ -1,0 +1,130 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v3.4.50",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "extras" : {
+                "DocProperties" : {
+                    "drawing_styles" : [
+                        {
+                            "name" : "Blender Default",
+                            "render_type" : 1,
+                            "raster_style" : "{\"bpy.data.worlds[0].color\": [0.05087608844041824, 0.05087608844041824, 0.05087608844041824], \"scene.render.engine\": \"BLENDER_EEVEE\", \"scene.render.film_transparent\": false, \"scene.view_settings.view_transform\": \"Filmic\", \"scene.display.shading.show_object_outline\": false, \"scene.display.shading.show_cavity\": false, \"scene.display.shading.cavity_type\": \"WORLD\", \"scene.display.shading.curvature_ridge_factor\": 0.0, \"scene.display.shading.curvature_valley_factor\": 0.0, \"scene.display.shading.light\": \"STUDIO\", \"scene.display.shading.color_type\": \"MATERIAL\", \"scene.display.shading.single_color\": [0.800000011920929, 0.800000011920929, 0.800000011920929], \"scene.display.shading.show_shadows\": false, \"scene.display.shading.shadow_intensity\": 0.5, \"scene.display.light_direction\": [0.5773502588272095, 0.5773502588272095, 0.5773502588272095], \"scene.view_settings.use_curve_mapping\": false, \"space.overlay.show_wireframes\": false, \"space.overlay.wireframe_threshold\": 1.0, \"space.overlay.show_floor\": true, \"space.overlay.show_axis_x\": true, \"space.overlay.show_axis_y\": true, \"space.overlay.show_axis_z\": false, \"space.overlay.show_object_origins\": true, \"space.overlay.show_relationship_lines\": true}"
+                        },
+                        {
+                            "name" : "Technical",
+                            "render_type" : 2,
+                            "raster_style" : "{\"bpy.data.worlds[0].color\": [1, 1, 1], \"scene.render.engine\": \"BLENDER_WORKBENCH\", \"scene.render.film_transparent\": false, \"scene.display.shading.show_object_outline\": true, \"scene.display.shading.show_cavity\": false, \"scene.display.shading.cavity_type\": \"BOTH\", \"scene.display.shading.curvature_ridge_factor\": 1, \"scene.display.shading.curvature_valley_factor\": 1, \"scene.view_settings.view_transform\": \"Standard\", \"scene.display.shading.light\": \"FLAT\", \"scene.display.shading.color_type\": \"SINGLE\", \"scene.display.shading.single_color\": [1, 1, 1], \"scene.display.shading.show_shadows\": false, \"scene.display.shading.shadow_intensity\": 0.5, \"scene.display.light_direction\": [0.5, 0.5, 0.5], \"scene.view_settings.use_curve_mapping\": false, \"space.overlay.show_wireframes\": true, \"space.overlay.wireframe_threshold\": 0, \"space.overlay.show_floor\": false, \"space.overlay.show_axis_x\": false, \"space.overlay.show_axis_y\": false, \"space.overlay.show_axis_z\": false, \"space.overlay.show_object_origins\": false, \"space.overlay.show_relationship_lines\": false}"
+                        },
+                        {
+                            "name" : "Shaded",
+                            "render_type" : 2,
+                            "raster_style" : "{\"bpy.data.worlds[0].color\": [1, 1, 1], \"scene.render.engine\": \"BLENDER_WORKBENCH\", \"scene.render.film_transparent\": false, \"scene.display.shading.show_object_outline\": true, \"scene.display.shading.show_cavity\": true, \"scene.display.shading.cavity_type\": \"BOTH\", \"scene.display.shading.curvature_ridge_factor\": 1, \"scene.display.shading.curvature_valley_factor\": 1, \"scene.view_settings.view_transform\": \"Standard\", \"scene.display.shading.light\": \"STUDIO\", \"scene.display.shading.color_type\": \"MATERIAL\", \"scene.display.shading.single_color\": [1, 1, 1], \"scene.display.shading.show_shadows\": true, \"scene.display.shading.shadow_intensity\": 0.5, \"scene.display.light_direction\": [0.5, 0.5, 0.5], \"scene.view_settings.use_curve_mapping\": false, \"space.overlay.show_wireframes\": false, \"space.overlay.wireframe_threshold\": 0, \"space.overlay.show_floor\": false, \"space.overlay.show_axis_x\": false, \"space.overlay.show_axis_y\": false, \"space.overlay.show_axis_z\": false, \"space.overlay.show_object_origins\": false, \"space.overlay.show_relationship_lines\": false}"
+                        }
+                    ]
+                },
+                "BIMProperties" : {},
+                "BIMProjectProperties" : {}
+            },
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Cube"
+        }
+    ],
+    "meshes" : [
+        {
+            "extras" : {
+                "BIMMeshProperties" : {}
+            },
+            "name" : "Cube",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "TEXCOORD_0" : 1,
+                        "NORMAL" : 2
+                    },
+                    "indices" : 3
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 72,
+            "max" : [
+                0.014999985694885254,
+                1,
+                1
+            ],
+            "min" : [
+                -0.014999985694885254,
+                -1,
+                -1
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 72,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 72,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 132,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 864,
+            "byteOffset" : 0,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 576,
+            "byteOffset" : 864,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 864,
+            "byteOffset" : 1440,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 264,
+            "byteOffset" : 2304,
+            "target" : 34963
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 2568,
+            "uri" : "data:application/octet-stream;base64,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"
+        }
+    ]
+}
