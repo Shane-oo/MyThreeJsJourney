@@ -43,6 +43,7 @@ import {SandComponent} from './practise/sand/sand.component';
 import {RoofComponent} from './practise/roof/roof.component';
 import {TilesComponent} from './practise/tiles/tiles.component';
 import {CombineMapsComponent} from './practise/combine-maps/combine-maps.component';
+import {KitchenDoorProfileComponent} from './practise/kitchen-door-profile/kitchen-door-profile.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import {CombineMapsComponent} from './practise/combine-maps/combine-maps.compone
     SandComponent,
     RoofComponent,
     TilesComponent,
-    CombineMapsComponent
+    CombineMapsComponent,
+    KitchenDoorProfileComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
@@ -126,7 +128,8 @@ import {CombineMapsComponent} from './practise/combine-maps/combine-maps.compone
       {path: 'sand', component: SandComponent},
       {path: 'roof', component: RoofComponent},
       {path: 'tiles', component: TilesComponent},
-      {path: 'combine-maps', component: CombineMapsComponent}
+      {path: 'combine-maps', component: CombineMapsComponent},
+      {path: 'profiles', component: KitchenDoorProfileComponent}
 
     ])
   ],

@@ -1,0 +1,147 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v3.4.50",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "extras" : {
+                "DocProperties" : {
+                    "drawing_styles" : [
+                        {
+                            "name" : "Blender Default",
+                            "render_type" : 1,
+                            "raster_style" : "{\"bpy.data.worlds[0].color\": [0.05087608844041824, 0.05087608844041824, 0.05087608844041824], \"scene.render.engine\": \"BLENDER_EEVEE\", \"scene.render.film_transparent\": false, \"scene.view_settings.view_transform\": \"Filmic\", \"scene.display.shading.show_object_outline\": false, \"scene.display.shading.show_cavity\": false, \"scene.display.shading.cavity_type\": \"WORLD\", \"scene.display.shading.curvature_ridge_factor\": 0.0, \"scene.display.shading.curvature_valley_factor\": 0.0, \"scene.display.shading.light\": \"STUDIO\", \"scene.display.shading.color_type\": \"MATERIAL\", \"scene.display.shading.single_color\": [0.800000011920929, 0.800000011920929, 0.800000011920929], \"scene.display.shading.show_shadows\": false, \"scene.display.shading.shadow_intensity\": 0.5, \"scene.display.light_direction\": [0.5773502588272095, 0.5773502588272095, 0.5773502588272095], \"scene.view_settings.use_curve_mapping\": false, \"space.overlay.show_wireframes\": false, \"space.overlay.wireframe_threshold\": 1.0, \"space.overlay.show_floor\": true, \"space.overlay.show_axis_x\": true, \"space.overlay.show_axis_y\": true, \"space.overlay.show_axis_z\": false, \"space.overlay.show_object_origins\": true, \"space.overlay.show_relationship_lines\": true}"
+                        },
+                        {
+                            "name" : "Technical",
+                            "render_type" : 2,
+                            "raster_style" : "{\"bpy.data.worlds[0].color\": [1, 1, 1], \"scene.render.engine\": \"BLENDER_WORKBENCH\", \"scene.render.film_transparent\": false, \"scene.display.shading.show_object_outline\": true, \"scene.display.shading.show_cavity\": false, \"scene.display.shading.cavity_type\": \"BOTH\", \"scene.display.shading.curvature_ridge_factor\": 1, \"scene.display.shading.curvature_valley_factor\": 1, \"scene.view_settings.view_transform\": \"Standard\", \"scene.display.shading.light\": \"FLAT\", \"scene.display.shading.color_type\": \"SINGLE\", \"scene.display.shading.single_color\": [1, 1, 1], \"scene.display.shading.show_shadows\": false, \"scene.display.shading.shadow_intensity\": 0.5, \"scene.display.light_direction\": [0.5, 0.5, 0.5], \"scene.view_settings.use_curve_mapping\": false, \"space.overlay.show_wireframes\": true, \"space.overlay.wireframe_threshold\": 0, \"space.overlay.show_floor\": false, \"space.overlay.show_axis_x\": false, \"space.overlay.show_axis_y\": false, \"space.overlay.show_axis_z\": false, \"space.overlay.show_object_origins\": false, \"space.overlay.show_relationship_lines\": false}"
+                        },
+                        {
+                            "name" : "Shaded",
+                            "render_type" : 2,
+                            "raster_style" : "{\"bpy.data.worlds[0].color\": [1, 1, 1], \"scene.render.engine\": \"BLENDER_WORKBENCH\", \"scene.render.film_transparent\": false, \"scene.display.shading.show_object_outline\": true, \"scene.display.shading.show_cavity\": true, \"scene.display.shading.cavity_type\": \"BOTH\", \"scene.display.shading.curvature_ridge_factor\": 1, \"scene.display.shading.curvature_valley_factor\": 1, \"scene.view_settings.view_transform\": \"Standard\", \"scene.display.shading.light\": \"STUDIO\", \"scene.display.shading.color_type\": \"MATERIAL\", \"scene.display.shading.single_color\": [1, 1, 1], \"scene.display.shading.show_shadows\": true, \"scene.display.shading.shadow_intensity\": 0.5, \"scene.display.light_direction\": [0.5, 0.5, 0.5], \"scene.view_settings.use_curve_mapping\": false, \"space.overlay.show_wireframes\": false, \"space.overlay.wireframe_threshold\": 0, \"space.overlay.show_floor\": false, \"space.overlay.show_axis_x\": false, \"space.overlay.show_axis_y\": false, \"space.overlay.show_axis_z\": false, \"space.overlay.show_object_origins\": false, \"space.overlay.show_relationship_lines\": false}"
+                        }
+                    ]
+                },
+                "BIMProperties" : {},
+                "BIMProjectProperties" : {}
+            },
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "extras" : {
+                "BIMObjectProperties" : {}
+            },
+            "mesh" : 0,
+            "name" : "Cube"
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "extras" : {
+                "BIMObjectProperties" : {}
+            },
+            "name" : "Material.001",
+            "pbrMetallicRoughness" : {
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.5
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "extras" : {
+                "BIMMeshProperties" : {}
+            },
+            "name" : "Cube",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "TEXCOORD_0" : 1,
+                        "NORMAL" : 2
+                    },
+                    "indices" : 3,
+                    "material" : 0
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 24,
+            "max" : [
+                -0.9168245792388916,
+                1.4039963483810425,
+                0.5058377385139465
+            ],
+            "min" : [
+                -0.9727047681808472,
+                0.4086112976074219,
+                -0.5058377385139465
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 24,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 24,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 36,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 288,
+            "byteOffset" : 0,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 192,
+            "byteOffset" : 288,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 288,
+            "byteOffset" : 480,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 72,
+            "byteOffset" : 768,
+            "target" : 34963
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 840,
+            "uri" : "data:application/octet-stream;base64,LgN5v4A10T6VfgE/LgN5v4A10T6VfgE/LgN5v4A10T6VfgE/LgN5vye2sz+VfgE/LgN5vye2sz+VfgE/LgN5vye2sz+VfgE/LgN5v4A10T6VfgG/LgN5v4A10T6VfgG/LgN5v4A10T6VfgG/LgN5vye2sz+VfgG/LgN5vye2sz+VfgG/LgN5vye2sz+VfgG/BLVqv4A10T6VfgE/BLVqv4A10T6VfgE/BLVqv4A10T6VfgE/BLVqvye2sz+VfgE/BLVqvye2sz+VfgE/BLVqvye2sz+VfgE/BLVqv4A10T6VfgG/BLVqv4A10T6VfgG/BLVqv4A10T6VfgG/BLVqvye2sz+VfgG/BLVqvye2sz+VfgG/BLVqvye2sz+VfgG/wACAP8T/fz96z4I/YhslP29KhT/w1EU+9f9/PwAAYLZ5z4I/AFSOOmTFhz+ekNY++AEJtxAAgD95z4I/YhslP29KhT+ekNY+AFYFNgAADTd3z4I/AFSOOmXFhz9iGyU/wI9utzIAgD9vSoU/YhslP2TFhz/w1EU+UE6ztgAAFDduSoU/AFSOOm9KhT+ekNY++wCAPwgAgD+EVIA/YhslP2XFhz+ekNY+NwCAPwAAJDaDVIA/AFSOOm9KhT9iGyU/AACAvwAAAAAAAACAAAAAAAAAAAAAAIA/AAAAAAAAgL8AAACAAACAvwAAAAAAAACAAAAAAAAAAAAAAIA/AAAAAAAAgD8AAACAAACAvwAAAAAAAACAAAAAAAAAAAAAAIC/AAAAAAAAgL8AAACAAACAvwAAAAAAAACAAAAAAAAAAAAAAIC/AAAAAAAAgD8AAACAAACAPwAAAAAAAACAAAAAAAAAAAAAAIA/AAAAAAAAgL8AAACAAACAPwAAAAAAAACAAAAAAAAAAAAAAIA/AAAAAAAAgD8AAACAAACAPwAAAAAAAACAAAAAAAAAAAAAAIC/AAAAAAAAgL8AAACAAACAPwAAAAAAAACAAAAAAAAAAAAAAIC/AAAAAAAAgD8AAACAAAADAAkAAAAJAAYABwAKABYABwAWABMAEgAVAA8AEgAPAAwADQAQAAQADQAEAAEACAAUAA4ACAAOAAIAFwALAAUAFwAFABEA"
+        }
+    ]
+}

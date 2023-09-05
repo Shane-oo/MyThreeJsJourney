@@ -1,9 +1,12 @@
 import {AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import * as THREE from "three";
+import {RepeatWrapping, sRGBEncoding} from "three";
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 import Stats from "three/examples/jsm/libs/stats.module";
 import * as lilGui from "lil-gui";
 import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
+
+import {CustomMeshStandardMaterial} from "./customMeshStandardMaterial";
 
 @Component({
   selector: 'app-combine-maps',
@@ -45,39 +48,53 @@ export class CombineMapsComponent implements OnInit, AfterViewInit {
   private directionalLight = new THREE.DirectionalLight(0xffffff, 1);
   private directionalLightHelper = new THREE.DirectionalLightHelper(this.directionalLight, 2);
 
-  private bulbLight = new THREE.PointLight('white', 1, 100, 2);
+  private bulbLight = new THREE.PointLight('white', 0.00001, 100, 2);
   private hemiLight = new THREE.HemisphereLight(0xddeeff, 0x0f0e0d, 0.02);
 
   // gui
   private gui = new lilGui.GUI({width: 200});
   private debugObject = {
+    claddingColourNormalMap: false,
+    bumpMap: false,
+    claddingProfileNormalMap: false
 
   };
 
   // Texture
   private textureLoader = new THREE.TextureLoader();
   // Textures
+  //todo
+  // load the timber diffuse map
+  // load the timber normal map
+  // load the cladding profile bump map, can we have a bump and normal?
+  // if not try to have two normal maps, must use custom shader
+
   /* private sandMap = this.textureLoader.load('/assets/images/sand/TexturesCom_Sand_Muddy2_2x2_512_albedo.jpg');
    private normalSandMap = this.textureLoader.load('/assets/images/sand/TexturesCom_Sand_Muddy2_2x2_512_normal.jpg');
    private displacementSandMap = this.textureLoader.load('/assets/images/sand/TexturesCom_Sand_Muddy2_2x2_512_height.jpg');
    private roughnessSandMap = this.textureLoader.load('/assets/images/sand/TexturesCom_Sand_Muddy2_2x2_512_roughness.jpg');
    private aoSandMap = this.textureLoader.load('/assets/images/sand/TexturesCom_Sand_Muddy2_2x2_512_ao.jpg');*/
-
+  private claddingColourMap = this.textureLoader.load('/assets/images/cladding/CladdingColorTimber.jpeg');
+  private claddingColourNormalMap = this.textureLoader.load('/assets/images/cladding/CladdingColorTimberNormalMap.jpeg');
+  private claddingProfileBumpMap = this.textureLoader.load('/assets/images/cladding/CladdingProfileBumpMap.jpeg');
+  private claddingProfileNormalMap = this.textureLoader.load('/assets/images/cladding/CladdingProfileNormalMap.jpeg');
 
   // GLTF Loader
   private gltfLoader = new GLTFLoader();
   // Floor
-  private floorGeometry = new THREE.PlaneGeometry(1, 1, 512, 512);
+  private floorGeometry = new THREE.PlaneGeometry(1, 1, 1024, 1024);
 
   // Planes
-  private material = new THREE.MeshStandardMaterial({ side: THREE.DoubleSide});
+  private material = new THREE.MeshStandardMaterial({map: this.claddingColourMap, side: THREE.DoubleSide});
 
+  private customMaterial = new CustomMeshStandardMaterial(this.claddingColourNormalMap, this.claddingProfileNormalMap, {
+    map: this.claddingColourMap, side: THREE.DoubleSide, normalMap:this.claddingColourNormalMap
+  })
 
-  private floorMesh = new THREE.Mesh(this.floorGeometry, this.material);
+  private floorMesh = new THREE.Mesh(this.floorGeometry, this.customMaterial);
 
 
   constructor() {
-
   }
 
   private get canvas(): HTMLCanvasElement {
@@ -101,7 +118,7 @@ export class CombineMapsComponent implements OnInit, AfterViewInit {
 
   @HostListener('dblclick', ['$event'])
   onDblClick(event: MouseEvent) {
-    if(!document.fullscreenElement) {
+    if (!document.fullscreenElement) {
       this.canvas.requestFullscreen().then(r => {
         console.log('fullscreen');
       });
@@ -155,6 +172,33 @@ export class CombineMapsComponent implements OnInit, AfterViewInit {
   }
 
   private modifyTextures() {
+    this.claddingColourMap.wrapS = this.claddingColourMap.wrapT = RepeatWrapping;
+    this.claddingColourMap.anisotropy = 4;
+    this.claddingColourMap.flipY = false;
+    this.claddingColourMap.repeat.set(0.73, 0.72);
+
+
+    this.claddingColourNormalMap.repeat.set(0.73, 0.73)
+
+    this.claddingColourMap.encoding = sRGBEncoding;
+
+    this.claddingColourNormalMap.wrapS = this.claddingColourNormalMap.wrapT = RepeatWrapping;
+    this.claddingColourNormalMap.anisotropy = 4;
+    this.claddingColourNormalMap.flipY = false;
+
+
+    this.claddingProfileBumpMap.repeat.set(3.5, 3.5)
+
+    this.claddingProfileBumpMap.wrapS = this.claddingProfileBumpMap.wrapT = RepeatWrapping;
+    this.claddingProfileBumpMap.anisotropy = 4;
+    this.claddingProfileBumpMap.flipY = false;
+
+
+    this.claddingProfileNormalMap.repeat.set(3, 3)
+
+    this.claddingProfileNormalMap.wrapS = this.claddingProfileNormalMap.wrapT = RepeatWrapping;
+    this.claddingProfileNormalMap.anisotropy = 4;
+    this.claddingProfileNormalMap.flipY = false;
   }
 
 
@@ -169,7 +213,7 @@ export class CombineMapsComponent implements OnInit, AfterViewInit {
     this.bulbLight.position.set(0, 2, 0);
     this.directionalLight.position.set(0, 30, 0);
     this.bulbLight.castShadow = true;
-    this.bulbLight.power = 17;
+    this.bulbLight.power = 5;
 
     this.floorMesh.rotateX(90);
     this.bulbLight.add(new THREE.Mesh(new THREE.SphereGeometry(0.02, 16, 8), new THREE.MeshStandardMaterial({
@@ -198,7 +242,7 @@ export class CombineMapsComponent implements OnInit, AfterViewInit {
  *
  */
   private modifyCamera() {
-    this.camera.position.set(-0.003996128262643776, 0.4094405813695616, 1.2620812635855518);
+    this.camera.position.set(-0.003996128262643776, 1.4094405813695616, 2.2620812635855518);
 
   }
 
@@ -216,6 +260,35 @@ export class CombineMapsComponent implements OnInit, AfterViewInit {
      *
     */
   private modifyDebugGUI() {
+    this.gui.add(this.debugObject, 'claddingColourNormalMap').onChange((value: boolean) => {
+      if (value) {
+        this.customMaterial.normalMap = this.claddingColourNormalMap;
+      } else {
+        this.customMaterial.normalMap = null;
+      }
+      this.floorMesh.material.needsUpdate = true;
+
+    });
+
+    this.gui.add(this.debugObject, 'bumpMap').onChange((value: boolean) => {
+      if (value) {
+        this.customMaterial.bumpMap = this.claddingProfileBumpMap;
+      } else {
+        this.customMaterial.bumpMap = null;
+      }
+      this.floorMesh.material.needsUpdate = true;
+
+    });
+
+    this.gui.add(this.debugObject, 'claddingProfileNormalMap').onChange((value: boolean) => {
+      if (value) {
+        this.customMaterial.normalMap = this.claddingProfileNormalMap;
+      } else {
+        this.customMaterial.normalMap = null;
+      }
+      this.floorMesh.material.needsUpdate = true;
+
+    });
   }
 
   private createStats() {
@@ -300,7 +373,11 @@ export class CombineMapsComponent implements OnInit, AfterViewInit {
     // Renderer
     // use canvas element in template
 
-    this.renderer = new THREE.WebGLRenderer({canvas: this.canvas, antialias: true, powerPreference: 'high-performance'});
+    this.renderer = new THREE.WebGLRenderer({
+      canvas: this.canvas,
+      antialias: true,
+      powerPreference: 'high-performance'
+    });
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.pixelRatio = this.renderer.getPixelRatio();
 

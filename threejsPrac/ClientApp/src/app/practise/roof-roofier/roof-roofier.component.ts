@@ -1,23 +1,23 @@
-import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 import Stats from 'three/examples/jsm/libs/stats.module';
 import * as lilGui from 'lil-gui';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
 // @ts-ignore
 import modifiedVertexShader from '../../../assets/shaders/roof/modifiedVertex.glsl';
 // @ts-ignore
 import modifiedCommon from '../../../assets/shaders/roof/cubicPulse.glsl';
-import { MeshBasicMaterial, RepeatWrapping, sRGBEncoding, Vector3 } from 'three';
+import {MeshBasicMaterial, RepeatWrapping, sRGBEncoding, Vector3} from 'three';
 
 import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils.js';
-import { GLTFExporter } from 'three/examples/jsm/exporters/GLTFExporter';
+import {GLTFExporter} from 'three/examples/jsm/exporters/GLTFExporter';
 
 @Component({
-             selector: 'app-roof-roofier',
-             templateUrl: './roof-roofier.component.html',
-             styleUrls: ['./roof-roofier.component.css']
-           })
+  selector: 'app-roof-roofier',
+  templateUrl: './roof-roofier.component.html',
+  styleUrls: ['./roof-roofier.component.css']
+})
 export class RoofRoofierComponent implements OnInit, AfterViewInit {
   /*
    * Animate the cube
@@ -68,11 +68,11 @@ export class RoofRoofierComponent implements OnInit, AfterViewInit {
   private gltfLoader = new GLTFLoader();
 
   private roofMaterial = new THREE.MeshStandardMaterial({
-                                                          map: this.roofMapTexture,
-                                                          bumpMap: this.roofBumpMapTexture,
-                                                          normalMap: this.normalMapTexture,
-                                                          color: '#4B4C46'
-                                                        });
+    map: this.roofMapTexture,
+    bumpMap: this.roofBumpMapTexture,
+    normalMap: this.normalMapTexture,
+    color: '#4B4C46'
+  });
   private numberOfVertices = 0;
 
 
@@ -101,7 +101,7 @@ export class RoofRoofierComponent implements OnInit, AfterViewInit {
 
   @HostListener('dblclick', ['$event'])
   onDblClick(event: MouseEvent) {
-    if(!document.fullscreenElement) {
+    if (!document.fullscreenElement) {
       this.canvas.requestFullscreen().then(r => {
         console.log('fullscreen');
       });
@@ -149,88 +149,93 @@ export class RoofRoofierComponent implements OnInit, AfterViewInit {
 
   private LoadModels() {
     // todo change
-    this.gltfLoader.load('/assets/models/prac/testModel.gltf',
-                         (gltf) => {
-                           console.log(gltf);
-                           let roof = gltf.scene.children.find(c => c.name
-                                                                    === 'AIR-SPACE-1772016386-171__AIR-SPACE-1772016386') as THREE.Mesh;
-                           roof.material = this.roofMaterial;
-                           const matrix = roof.matrixWorld;
-                           const index = roof.geometry.index?.array as number[];
-                           const normal = new Vector3();
-                           const position = new Vector3();
-                           const normalDic = new Map<string, [THREE.BufferGeometry]>();
-                           let faces = 0;
-                           // Iterate over the faces of the geometry
-                           for(let i = 0, il = roof.geometry.index?.count || 0; i < il; i += 3) {
-                             // Get the vertex indices for the current face
-                             const a = roof.geometry.index!.getX(i);
-                             const b = roof.geometry.index!.getX(i + 1);
-                             const c = roof.geometry.index!.getX(i + 2);
+    this.gltfLoader.load('/assets/models/RoseWood/rosewood.gltf',
+      (gltf) => {
+        console.log(gltf);
+        let roof = gltf.scene.children.find(c => c.name
+          === '4D-ROOFING__ROOF-2') as THREE.Mesh;
+        roof.material = this.roofMaterial;
+        const matrix = roof.matrixWorld;
+        const index = roof.geometry.index?.array as number[];
+        const normal = new Vector3();
+        const position = new Vector3();
+        const normalDic = new Map<string, [THREE.BufferGeometry]>();
+        let faces = 0;
+        // Iterate over the faces of the geometry
+        for (let i = 0, il = roof.geometry.index?.count || 0; i < il; i += 3) {
+          // Get the vertex indices for the current face
+          const a = roof.geometry.index!.getX(i);
+          const b = roof.geometry.index!.getX(i + 1);
+          const c = roof.geometry.index!.getX(i + 2);
 
-                             // Get the normals and positions for the three vertices of the face
-                             normal.fromBufferAttribute(roof.geometry.attributes.normal, a);
-                             position.fromBufferAttribute(roof.geometry.attributes.position, a);
-                             const vertex1 = new THREE.Vector3(-position.x, -position.y, position.z);
+          // Get the normals and positions for the three vertices of the face
+          normal.fromBufferAttribute(roof.geometry.attributes.normal, a);
+          position.fromBufferAttribute(roof.geometry.attributes.position, a);
+          const vertex1 = new THREE.Vector3(-position.x, -position.y, position.z);
 
-                             normal.fromBufferAttribute(roof.geometry.attributes.normal, b);
-                             position.fromBufferAttribute(roof.geometry.attributes.position, b);
-                             const vertex2 = new THREE.Vector3(position.x, -position.y, position.z);
+          normal.fromBufferAttribute(roof.geometry.attributes.normal, b);
+          position.fromBufferAttribute(roof.geometry.attributes.position, b);
+          const vertex2 = new THREE.Vector3(position.x, -position.y, position.z);
 
-                             normal.fromBufferAttribute(roof.geometry.attributes.normal, c);
-                             position.fromBufferAttribute(roof.geometry.attributes.position, c);
-                             const vertex3 = new THREE.Vector3(position.x, position.y, position.z);
+          normal.fromBufferAttribute(roof.geometry.attributes.normal, c);
+          position.fromBufferAttribute(roof.geometry.attributes.position, c);
+          const vertex3 = new THREE.Vector3(position.x, position.y, position.z);
 
-                             vertex1.applyMatrix4(matrix);
-                             vertex2.applyMatrix4(matrix);
-                             vertex3.applyMatrix4(matrix);
+          vertex1.applyMatrix4(matrix);
+          vertex2.applyMatrix4(matrix);
+          vertex3.applyMatrix4(matrix);
 
-                             // Create a new geometry and set its vertices to the three vertices of the face
-                             const triangleGeometry = new THREE.BufferGeometry();
-                             const vertices = new Float32Array([
-                                                                 -vertex1.x, -vertex1.y, vertex1.z,
-                                                                 vertex2.x, -vertex2.y, vertex2.z,
-                                                                 vertex3.x, vertex3.y, vertex3.z
-                                                               ]);
-                             triangleGeometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+          // Create a new geometry and set its vertices to the three vertices of the face
+          const triangleGeometry = new THREE.BufferGeometry();
+          const vertices = new Float32Array([
+            -vertex1.x, -vertex1.y, vertex1.z,
+            vertex2.x, -vertex2.y, vertex2.z,
+            vertex3.x, vertex3.y, vertex3.z
+          ]);
+          triangleGeometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
 
 
-                             const normalString = normal.x.toFixed(4)
-                                                  + ','
-                                                  + normal.y.toFixed(4)
-                                                  + ','
-                                                  + normal.z.toFixed(4);
-                             if(normal.y < 0) {
-                               continue;
-                             }
-                             if(normalDic.has(normalString)) {
-                               console.log(normal);
-                               const arr = normalDic.get(normalString);
-                               arr!.push(triangleGeometry);
-                             } else {
-                               normalDic.set(normalString, [triangleGeometry]);
-                             }
-                             //mesh.position.y +=10;
-                             faces++;
-                             //console.log(mesh.position)
-                           }
-                           normalDic.forEach((value, key) => {
+          const normalString = normal.x.toFixed(4)
+            + ','
+            + normal.y.toFixed(4)
+            + ','
+            + normal.z.toFixed(4);
+          if (normal.y < 0) {
+            continue;
+          }
+          if (normalDic.has(normalString)) {
+            console.log(normal);
+            const arr = normalDic.get(normalString);
+            arr!.push(triangleGeometry);
+          } else {
+            normalDic.set(normalString, [triangleGeometry]);
+          }
+          //mesh.position.y +=10;
+          faces++;
+          //console.log(mesh.position)
+        }
+        normalDic.forEach((value, key) => {
 
-                             let mergedBuffer = BufferGeometryUtils.mergeBufferGeometries(value, true);
-                             mergedBuffer = BufferGeometryUtils.mergeVertices(mergedBuffer);
-                             const mesh = new THREE.Mesh(mergedBuffer, new MeshBasicMaterial({color: this.randomColor()}));
-                             this.mergedMeshes.push(mesh);
-                             //     this.scene.add(mesh);
-                           });
-                           console.log(faces);
-                           console.log(normalDic);
-                           this.scene.add(gltf.scene);
-                         });
+          let mergedBuffer = BufferGeometryUtils.mergeBufferGeometries(value, true);
+          mergedBuffer = BufferGeometryUtils.mergeVertices(mergedBuffer);
+          const mesh = new THREE.Mesh(mergedBuffer, new MeshBasicMaterial(
+            {
+              color: this.randomColor(),
+              side: THREE.DoubleSide
+            }
+          ));
+          this.mergedMeshes.push(mesh);
+          this.scene.add(mesh);
+        });
+        console.log(faces);
+        console.log(normalDic);
+        this.scene.add(gltf.scene);
+      });
   }
 
   private randomColor(): number {
     let color = '0x';
-    for(let i = 0; i < 6; i++) {
+    for (let i = 0; i < 6; i++) {
       const random = Math.random();
       const bit = (random * 16) | 0;
       color += bit.toString(16);
@@ -407,7 +412,11 @@ export class RoofRoofierComponent implements OnInit, AfterViewInit {
     // Renderer
     // use canvas element in template
 
-    this.renderer = new THREE.WebGLRenderer({canvas: this.canvas, antialias: true, powerPreference: 'high-performance'});
+    this.renderer = new THREE.WebGLRenderer({
+      canvas: this.canvas,
+      antialias: true,
+      powerPreference: 'high-performance'
+    });
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.pixelRatio = this.renderer.getPixelRatio();
 
@@ -462,7 +471,7 @@ export class RoofRoofierComponent implements OnInit, AfterViewInit {
 
     // call addVertex every time the position's x coordinate increases by x
     this.mergedMeshes.forEach((mesh: THREE.Mesh) => {
-      for(let i = 0; i < 100; i++) {
+      for (let i = 0; i < 100; i++) {
         position.x = i * x;
         this.addVertex(position, numOfNewVertices, mesh);
       }
@@ -472,7 +481,7 @@ export class RoofRoofierComponent implements OnInit, AfterViewInit {
 
   private addVertex(position: THREE.Vector3, numVertices: number, mesh: THREE.Mesh) {
     let positionArray = mesh.geometry.getAttribute('position').array as Float32Array;
-    if(numVertices === positionArray.length / 3) {
+    if (numVertices === positionArray.length / 3) {
       // resize the vertex data array if necessary
       const newVertexData = new Float32Array(positionArray.length * 2);
       newVertexData.set(positionArray);
