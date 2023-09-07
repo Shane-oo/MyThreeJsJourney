@@ -72,17 +72,17 @@ export class KitchenDoorProfileComponent implements OnInit, AfterViewInit {
 
   // Lights
   // Lights
-  private directionalLight1 = new THREE.DirectionalLight(0xffffff, 2);
+  private directionalLight1 = new THREE.DirectionalLight(0xffffff, 3);
   private directionalLight1Helper = new THREE.DirectionalLightHelper(this.directionalLight1, 2);
-  private directionalLight2 = new THREE.DirectionalLight(0xffffff, 2);
+  private directionalLight2 = new THREE.DirectionalLight(0xffffff, 3);
   private directionalLight2Helper = new THREE.DirectionalLightHelper(this.directionalLight2, 2);
-  private directionalLight3 = new THREE.DirectionalLight(0xffffff, 2);
+  private directionalLight3 = new THREE.DirectionalLight(0xffffff, 3);
   private directionalLight3Helper = new THREE.DirectionalLightHelper(this.directionalLight3, 2);
-  private directionalLight4 = new THREE.DirectionalLight(0xffffff, 2);
+  private directionalLight4 = new THREE.DirectionalLight(0xffffff, 3);
   private directionalLight4Helper = new THREE.DirectionalLightHelper(this.directionalLight4, 2);
-  private directionalLight5 = new THREE.DirectionalLight(0xffffff, 2);
+  private directionalLight5 = new THREE.DirectionalLight(0xffffff, 3);
   private directionalLight5Helper = new THREE.DirectionalLightHelper(this.directionalLight5, 2);
-  private directionalLight6 = new THREE.DirectionalLight(0xffffff, 2);
+  private directionalLight6 = new THREE.DirectionalLight(0xffffff, 3);
   private directionalLight6Helper = new THREE.DirectionalLightHelper(this.directionalLight6, 2);
 
   private bulbLight = new THREE.PointLight('white', 1, 100, 2);
@@ -113,9 +113,9 @@ export class KitchenDoorProfileComponent implements OnInit, AfterViewInit {
 
     //map: this.oakTexture,
 
-    color: new THREE.Color("#b6fcd5"),
+    color: new THREE.Color('black'),
     wireframe: false,
-    side: THREE.DoubleSide
+    //side: THREE.DoubleSide
   });
 
 
@@ -216,10 +216,10 @@ export class KitchenDoorProfileComponent implements OnInit, AfterViewInit {
 
   private LoadModels() {
 
-    this.gltfLoader.load('/assets/models/RoseWood/rosewoodKitchenSeperated3.gltf',
+    this.gltfLoader.load('/assets/models/RoseWood/rosewoodKitchenSeperated4.gltf',
       (kitchenGltf) => {
 
-        this.gltfLoader.load('/assets/models/RoseWood/FourthProfileCubeTest.gltf',
+        this.gltfLoader.load('/assets/models/RoseWood/EigthProfileCubeTest.gltf',
           (cubeGltf) => {
 
             this.myCube = cubeGltf.scene.children.find(c => c.name === 'Cube') as THREE.Mesh<THREE.BufferGeometry, THREE.MeshStandardMaterial>;
@@ -262,7 +262,7 @@ export class KitchenDoorProfileComponent implements OnInit, AfterViewInit {
       new THREE.MeshStandardMaterial().copy(this.myCube.material)
     );
 
-    newCabinet.material.color = new THREE.Color(this.randomColor());
+    //  newCabinet.material.color = new THREE.Color(this.randomColor());
     newCabinet.position.set(0, 0, 0);
 
     oldObject.geometry.computeBoundingBox();
@@ -339,7 +339,6 @@ export class KitchenDoorProfileComponent implements OnInit, AfterViewInit {
     const vertex = new THREE.Vector3();
     for (let i = 0; i < positionAttribute.count; i++) {
       vertex.fromBufferAttribute(positionAttribute, i);
-
       if (isOnXAxis) {
         if (vertex.x > 0.0) {
           // get lowestHorizontalVertexOnRightPlane
@@ -415,11 +414,17 @@ export class KitchenDoorProfileComponent implements OnInit, AfterViewInit {
 
     newCabinet.position.copy(bottomCenter);
 
+    if (oldObject.name === "Cabinet-23") {
+      this.bulbLight.position.copy(bottomCenter)
+      this.bulbLight.position.setX(this.bulbLight.position.x + 0.5);
+    }
+
     if (((lowestYVertexOnUpperPlane - differenceInHeight) < hightestYVertexOnLowerPlane) ||
       ((lowestHorizontalVertexOnRightPlane - differenceInHeight) < hightestHorizontalVertexOnLeftPlane)) {
       console.log("object cannot be reshaped");
       this.scene.add(oldObject)
     } else {
+      newCabinet.geometry.computeBoundingSphere();
       this.scene.add(newCabinet);
     }
 
@@ -622,7 +627,7 @@ export class KitchenDoorProfileComponent implements OnInit, AfterViewInit {
     this.scene.add(this.directionalLight6);//, this.directionalLight6Helper);
 
     //this.scene.add(this.floorMesh);
-    this.scene.add(this.tileMesh);
+    //this.scene.add(this.tileMesh);
 
     const axesHelper = new THREE.AxesHelper(5);
     axesHelper.setColors(new THREE.Color('red'), new THREE.Color('yellow'), new THREE.Color('blue'))
@@ -660,7 +665,7 @@ export class KitchenDoorProfileComponent implements OnInit, AfterViewInit {
         if (intersects.length != 0) {
 
           if (!this.currentIntersect && object.material) {
-            object.material.color.set(this.randomColor());
+            // object.material.color.set(this.randomColor());
           }
           this.currentIntersect = intersects[0];
         } else {
