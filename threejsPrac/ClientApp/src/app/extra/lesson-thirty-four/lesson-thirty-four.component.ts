@@ -227,7 +227,7 @@ export class LessonThirtyFourComponent implements OnInit, AfterViewInit {
  */
   private modifyScene() {
     this.scene = new THREE.Scene();
-    this.environmentMap.encoding = THREE.sRGBEncoding;
+    this.environmentMap.colorSpace = THREE.SRGBColorSpace;
     this.scene.background = this.environmentMap;
     this.scene.environment = this.environmentMap;
 
@@ -325,8 +325,8 @@ export class LessonThirtyFourComponent implements OnInit, AfterViewInit {
 
     this.renderer.setSize(this.width, this.height);
     // Activate shadow map
-    this.renderer.physicallyCorrectLights = true;
-    this.renderer.outputEncoding = THREE.sRGBEncoding;
+    //this.renderer.physicallyCorrectLights = true;
+    this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     this.renderer.toneMapping = THREE.ReinhardToneMapping;
     this.renderer.toneMappingExposure = 3;
     this.renderer.shadowMap.enabled = true;

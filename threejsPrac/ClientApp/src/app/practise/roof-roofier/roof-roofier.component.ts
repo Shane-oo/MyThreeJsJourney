@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import * as THREE from 'three';
+import {RepeatWrapping, SRGBColorSpace, Vector3} from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 import Stats from 'three/examples/jsm/libs/stats.module';
 import * as lilGui from 'lil-gui';
@@ -8,9 +9,6 @@ import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
 import modifiedVertexShader from '../../../assets/shaders/roof/modifiedVertex.glsl';
 // @ts-ignore
 import modifiedCommon from '../../../assets/shaders/roof/cubicPulse.glsl';
-import {MeshBasicMaterial, RepeatWrapping, sRGBEncoding, Vector3} from 'three';
-
-import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import {GLTFExporter} from 'three/examples/jsm/exporters/GLTFExporter';
 
 @Component({
@@ -35,7 +33,7 @@ export class RoofRoofierComponent implements OnInit, AfterViewInit {
   private controls!: OrbitControls;
 
   // Stats
-  private stats: Stats = Stats();
+  private stats: Stats = new Stats();
 
   // Initialise renderer
   private renderer!: THREE.WebGLRenderer;
@@ -130,7 +128,7 @@ export class RoofRoofierComponent implements OnInit, AfterViewInit {
     this.scene.remove(this.camera);
     this.gui.destroy();
 
-    this.stats.domElement.remove();
+    this.stats.dom.remove();
 
   }
 
@@ -156,7 +154,7 @@ export class RoofRoofierComponent implements OnInit, AfterViewInit {
           === '4D-ROOFING__ROOF-2') as THREE.Mesh;
         roof.material = this.roofMaterial;
         const matrix = roof.matrixWorld;
-        const index = roof.geometry.index?.array as number[];
+        const index = roof.geometry.index?.array as unknown as number[];
         const normal = new Vector3();
         const position = new Vector3();
         const normalDic = new Map<string, [THREE.BufferGeometry]>();
@@ -214,7 +212,8 @@ export class RoofRoofierComponent implements OnInit, AfterViewInit {
           faces++;
           //console.log(mesh.position)
         }
-        normalDic.forEach((value, key) => {
+/*        BROKEN
+normalDic.forEach((value, key) => {
 
           let mergedBuffer = BufferGeometryUtils.mergeBufferGeometries(value, true);
           mergedBuffer = BufferGeometryUtils.mergeVertices(mergedBuffer);
@@ -226,7 +225,7 @@ export class RoofRoofierComponent implements OnInit, AfterViewInit {
           ));
           this.mergedMeshes.push(mesh);
           this.scene.add(mesh);
-        });
+        });*/
         console.log(faces);
         console.log(normalDic);
         this.scene.add(gltf.scene);
@@ -257,7 +256,7 @@ export class RoofRoofierComponent implements OnInit, AfterViewInit {
     this.roofMapTexture.flipY = false;
     this.roofMapTexture.repeat.set(2, 2);
     this.roofMapTexture.offset.set(0, 0);
-    this.roofMapTexture.encoding = sRGBEncoding;
+    this.roofMapTexture.colorSpace = SRGBColorSpace;
 
 
     this.roofBumpMapTexture.wrapS = this.roofBumpMapTexture.wrapT = RepeatWrapping;
@@ -265,14 +264,14 @@ export class RoofRoofierComponent implements OnInit, AfterViewInit {
     this.roofBumpMapTexture.flipY = false;
     this.roofBumpMapTexture.repeat.set(2, 2);
     this.roofBumpMapTexture.offset.set(0, 0);
-    this.roofBumpMapTexture.encoding = sRGBEncoding;
+    this.roofBumpMapTexture.colorSpace = SRGBColorSpace;
 
     this.normalMapTexture.wrapS = this.roofBumpMapTexture.wrapT = RepeatWrapping;
     this.normalMapTexture.anisotropy = 4;
     this.normalMapTexture.flipY = false;
     this.normalMapTexture.repeat.set(2, 2);
     this.normalMapTexture.offset.set(0, 0);
-    this.normalMapTexture.encoding = sRGBEncoding;
+    this.normalMapTexture.colorSpace = SRGBColorSpace;
 
   }
 
@@ -426,7 +425,7 @@ export class RoofRoofierComponent implements OnInit, AfterViewInit {
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
     // Output Encoding
-    this.renderer.outputEncoding = THREE.sRGBEncoding;
+    this.renderer.outputColorSpace = THREE.SRGBColorSpace;
 
     // Optimise Renderer shadow map
     // Only update the shadow once i.e. a non moving sun

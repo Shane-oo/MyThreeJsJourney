@@ -4,7 +4,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import Stats from 'three/examples/jsm/libs/stats.module';
 import * as lilGui from 'lil-gui';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { MeshBasicMaterial, RepeatWrapping, sRGBEncoding, Vector3 } from 'three';
+import { MeshBasicMaterial, RepeatWrapping, SRGBColorSpace, Vector3 } from 'three';
 import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils';
 import { GLTFExporter } from 'three/examples/jsm/exporters/GLTFExporter';
 
@@ -30,7 +30,7 @@ export class SandComponent implements OnInit, AfterViewInit {
   private controls!: OrbitControls;
 
   // Stats
-  private stats: Stats = Stats();
+  private stats: Stats = new Stats();
 
   // Initialise renderer
   private renderer!: THREE.WebGLRenderer;
@@ -156,7 +156,7 @@ export class SandComponent implements OnInit, AfterViewInit {
     this.scene.remove(this.camera);
     this.gui.destroy();
 
-    this.stats.domElement.remove();
+    this.stats.dom.remove();
 
   }
 
@@ -335,7 +335,7 @@ export class SandComponent implements OnInit, AfterViewInit {
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
     // Output Encoding
-    this.renderer.outputEncoding = THREE.sRGBEncoding;
+    this.renderer.outputColorSpace = THREE.SRGBColorSpace;
 
     // Optimise Renderer shadow map
     // Only update the shadow once i.e. a non moving sun

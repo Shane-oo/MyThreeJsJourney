@@ -1,16 +1,16 @@
-import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
+import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
 import * as lilGui from 'lil-gui';
 import Stats from 'three/examples/jsm/libs/stats.module';
 import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils';
 
 @Component({
-             selector: 'app-lesson-thirty-three',
-             templateUrl: './lesson-thirty-three.component.html',
-             styleUrls: ['./lesson-thirty-three.component.css']
-           })
+  selector: 'app-lesson-thirty-three',
+  templateUrl: './lesson-thirty-three.component.html',
+  styleUrls: ['./lesson-thirty-three.component.css']
+})
 export class LessonThirtyThreeComponent implements OnInit, AfterViewInit {
   /*
    * Animate the cube
@@ -71,7 +71,7 @@ export class LessonThirtyThreeComponent implements OnInit, AfterViewInit {
   private displacementTexture = this.textureLoader.load('../../assets/images/displacementMap.png');
 
   // Stats
-  private stats: Stats = Stats();
+  private stats: Stats = new Stats();
 
   private cameraHelper = new THREE.CameraHelper(this.directionalLight.shadow.camera);
 
@@ -80,12 +80,12 @@ export class LessonThirtyThreeComponent implements OnInit, AfterViewInit {
   private shaderGeometry = new THREE.PlaneGeometry(10, 10, 256, 256);
 
   private shaderMaterial = new THREE.ShaderMaterial({
-                                                      precision: 'lowp',
-                                                      uniforms:
-                                                        {
-                                                          uDisplacementTexture: {value: this.displacementTexture}
-                                                        },
-                                                      vertexShader: `
+    precision: 'lowp',
+    uniforms:
+      {
+        uDisplacementTexture: {value: this.displacementTexture}
+      },
+    vertexShader: `
          #define DISPLACEMENT_STRENGTH 1.5
          uniform sampler2D uDisplacementTexture;
 
@@ -121,7 +121,7 @@ export class LessonThirtyThreeComponent implements OnInit, AfterViewInit {
              gl_FragColor = vec4(vColor, 1.0);
          }
      `
-                                                    });
+  });
 
   private shaderMesh = new THREE.Mesh(this.shaderGeometry, this.shaderMaterial);
 
@@ -150,7 +150,7 @@ export class LessonThirtyThreeComponent implements OnInit, AfterViewInit {
 
   @HostListener('dblclick', ['$event'])
   onDblClick(event: MouseEvent) {
-    if(!document.fullscreenElement) {
+    if (!document.fullscreenElement) {
       this.canvas.requestFullscreen().then(r => {
         console.log('fullscreen');
       });
@@ -196,7 +196,7 @@ export class LessonThirtyThreeComponent implements OnInit, AfterViewInit {
     this.scene.remove(this.camera);
     this.gui.destroy();
 
-    this.stats.domElement.remove();
+    this.stats.dom.remove();
 
   }
 
@@ -342,7 +342,7 @@ export class LessonThirtyThreeComponent implements OnInit, AfterViewInit {
     const mesh = new THREE.InstancedMesh(geometry, material, 50);
     mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
     this.scene.add(mesh);
-    for(let i = 0; i < 50; i++) {
+    for (let i = 0; i < 50; i++) {
       const position = new THREE.Vector3(
         (Math.random() - 0.5) * 10,
         (Math.random() - 0.5) * 10,
@@ -439,7 +439,11 @@ export class LessonThirtyThreeComponent implements OnInit, AfterViewInit {
     // Renderer
     // use canvas element in template
 
-    this.renderer = new THREE.WebGLRenderer({canvas: this.canvas, antialias: true, powerPreference: 'high-performance'});
+    this.renderer = new THREE.WebGLRenderer({
+      canvas: this.canvas,
+      antialias: true,
+      powerPreference: 'high-performance'
+    });
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.pixelRatio = this.renderer.getPixelRatio();
 

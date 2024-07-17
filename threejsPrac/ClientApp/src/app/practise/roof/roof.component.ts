@@ -1,14 +1,13 @@
-import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import * as THREE from 'three';
-import { Mesh, MeshStandardMaterial, RepeatWrapping, sRGBEncoding } from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import {Mesh, MeshStandardMaterial, RepeatWrapping, SRGBColorSpace} from 'three';
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 import Stats from 'three/examples/jsm/libs/stats.module';
 import * as lilGui from 'lil-gui';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils.js';
+import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
 
 //@ts-ignore
-import { LoopSubdivision } from 'three-subdivide';
+import {LoopSubdivision} from 'three-subdivide';
 
 @Component({
              selector: 'app-roof',
@@ -32,7 +31,7 @@ export class RoofComponent implements OnInit, AfterViewInit {
   private controls!: OrbitControls;
 
   // Stats
-  private stats: Stats = Stats();
+  private stats: Stats = new Stats();
 
   // Initialise renderer
   private renderer!: THREE.WebGLRenderer;
@@ -180,7 +179,7 @@ export class RoofComponent implements OnInit, AfterViewInit {
     this.scene.remove(this.camera);
     this.gui.destroy();
 
-    this.stats.domElement.remove();
+    this.stats.dom.remove();
 
   }
 
@@ -257,7 +256,7 @@ export class RoofComponent implements OnInit, AfterViewInit {
         this.roofMap.flipY = false;
         this.roofMap.repeat.set(2, 2);
         this.roofMap.offset.set(0, 0);
-        this.roofMap.encoding = sRGBEncoding;
+        this.roofMap.colorSpace = SRGBColorSpace;
 
         this.roofNormalMap.wrapS = this.roofNormalMap.wrapT = RepeatWrapping;
         this.roofNormalMap.anisotropy = 4;
@@ -271,7 +270,7 @@ export class RoofComponent implements OnInit, AfterViewInit {
         this.displacementMap.flipY = false;
         this.displacementMap.repeat.set(2, 2);
         this.displacementMap.offset.set(0, 0);
-        this.displacementMap.encoding = sRGBEncoding;
+        this.displacementMap.colorSpace = SRGBColorSpace;
 
 
         this.roughnessMap.wrapS = this.roughnessMap.wrapT = RepeatWrapping;
@@ -279,14 +278,14 @@ export class RoofComponent implements OnInit, AfterViewInit {
         this.roughnessMap.flipY = false;
         this.roughnessMap.repeat.set(2, 2);
         this.roughnessMap.offset.set(0, 0);
-        this.roughnessMap.encoding = sRGBEncoding;
+        this.roughnessMap.colorSpace = SRGBColorSpace;
 
         this.metallicMap.wrapS = this.metallicMap.wrapT = RepeatWrapping;
         this.metallicMap.anisotropy = 4;
         this.metallicMap.flipY = false;
         this.metallicMap.repeat.set(2, 2);
         this.metallicMap.offset.set(0, 0);
-        this.metallicMap.encoding = sRGBEncoding;
+        this.metallicMap.colorSpace = SRGBColorSpace;
 
   }
 
@@ -471,7 +470,7 @@ export class RoofComponent implements OnInit, AfterViewInit {
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
     // Output Encoding
-    this.renderer.outputEncoding = THREE.sRGBEncoding;
+    this.renderer.outputColorSpace = THREE.SRGBColorSpace;
 
     // Optimise Renderer shadow map
     // Only update the shadow once i.e. a non moving sun

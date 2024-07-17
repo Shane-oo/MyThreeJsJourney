@@ -4,7 +4,7 @@ import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 import Stats from "three/examples/jsm/libs/stats.module";
 import * as lilGui from "lil-gui";
 import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
-import {Color, Float32BufferAttribute, Matrix4, Mesh, MeshStandardMaterial, RepeatWrapping, sRGBEncoding} from "three";
+import {Color, Float32BufferAttribute, Matrix4, Mesh, MeshStandardMaterial, RepeatWrapping} from "three";
 //@ts-ignore
 import vertexShader from '../../../assets/shaders/profiles/vertex.glsl';
 
@@ -56,7 +56,7 @@ export class KitchenDoorProfileComponent implements OnInit, AfterViewInit {
   private controls!: OrbitControls;
 
   // Stats
-  private stats: Stats = Stats();
+  //private stats: Stats = Stats();
 
   // Initialise renderer
   private renderer!: THREE.WebGLRenderer;
@@ -197,7 +197,7 @@ export class KitchenDoorProfileComponent implements OnInit, AfterViewInit {
     this.scene.remove(this.camera);
     this.gui.destroy();
 
-    this.stats.domElement.remove();
+    //this.stats.domElement.remove();
 
   }
 
@@ -579,8 +579,8 @@ export class KitchenDoorProfileComponent implements OnInit, AfterViewInit {
   }
 
   private createStats() {
-    this.stats.showPanel(0);
-    document.body.appendChild(this.stats.dom);
+    //this.stats.showPanel(0);
+    //document.body.appendChild(this.stats.dom);
   }
 
 
@@ -647,7 +647,7 @@ export class KitchenDoorProfileComponent implements OnInit, AfterViewInit {
 
   // Keep a performant native Javascript code especially in the tick function
   private animateObjects() {
-    this.stats.begin();
+    //this.stats.begin();
 
     // Time
     const elapsedTime = this.clock.getElapsedTime();
@@ -687,7 +687,7 @@ export class KitchenDoorProfileComponent implements OnInit, AfterViewInit {
     //   this.bulbLight.position.y = (Math.cos(elapsedTime) * 0.75 + 0.75) / 3 + 0.1;
     //this.cameraHelper.update();
 
-    this.stats.end();
+    //this.stats.end();
 
 
   }
@@ -715,7 +715,7 @@ export class KitchenDoorProfileComponent implements OnInit, AfterViewInit {
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
     // Output Encoding
-    this.renderer.outputEncoding = THREE.sRGBEncoding;
+    //this.renderer.outputEncoding = THREE.sRGBEncoding;
 
     // Optimise Renderer shadow map
     // Only update the shadow once i.e. a non moving sun

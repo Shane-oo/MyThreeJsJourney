@@ -226,11 +226,11 @@ export class LessonThirtyOneComponent implements OnInit, AfterViewInit {
  */
   private modifyScene() {
     this.scene = new THREE.Scene();
-    this.environmentMap.encoding = THREE.sRGBEncoding;
+    this.environmentMap.colorSpace = THREE.SRGBColorSpace;
     this.scene.background = this.environmentMap;
     this.scene.environment = this.environmentMap;
 
-    this.mapTexture.encoding = THREE.sRGBEncoding;
+    this.mapTexture.colorSpace = THREE.SRGBColorSpace;
   }
 
   /*
@@ -327,8 +327,8 @@ export class LessonThirtyOneComponent implements OnInit, AfterViewInit {
     // Activate shadow map
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    this.renderer.physicallyCorrectLights = true;
-    this.renderer.outputEncoding = THREE.sRGBEncoding;
+    //this.renderer.physicallyCorrectLights = true;
+    this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1;
     // Must change component

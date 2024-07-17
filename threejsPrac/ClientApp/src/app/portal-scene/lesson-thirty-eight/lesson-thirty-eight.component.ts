@@ -36,7 +36,7 @@ export class LessonThirtyEightComponent implements OnInit, AfterViewInit {
   private controls!: OrbitControls;
 
   // Stats
-  private stats: Stats = Stats();
+  private stats: Stats = new Stats();
 
   // Initialise renderer
   private renderer!: THREE.WebGLRenderer;
@@ -168,7 +168,7 @@ export class LessonThirtyEightComponent implements OnInit, AfterViewInit {
     this.scene.remove(this.camera);
     this.gui.destroy();
 
-    this.stats.domElement.remove();
+    this.stats.dom.remove();
 
   }
 
@@ -214,7 +214,7 @@ export class LessonThirtyEightComponent implements OnInit, AfterViewInit {
 
   private modifyTextures() {
     this.bakedTexture.flipY = false;
-    this.bakedTexture.encoding = THREE.sRGBEncoding;
+    this.bakedTexture.colorSpace = THREE.SRGBColorSpace;
   }
 
 
@@ -372,7 +372,7 @@ export class LessonThirtyEightComponent implements OnInit, AfterViewInit {
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
     // Output Encoding
-    this.renderer.outputEncoding = THREE.sRGBEncoding;
+    this.renderer.outputColorSpace = THREE.SRGBColorSpace;
 
     // Optimise Renderer shadow map
     // Only update the shadow once i.e. a non moving sun

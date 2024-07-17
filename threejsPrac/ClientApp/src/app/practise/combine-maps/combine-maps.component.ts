@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import * as THREE from "three";
-import {RepeatWrapping, sRGBEncoding} from "three";
+import {RepeatWrapping, SRGBColorSpace} from "three";
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 import Stats from "three/examples/jsm/libs/stats.module";
 import * as lilGui from "lil-gui";
@@ -30,7 +30,7 @@ export class CombineMapsComponent implements OnInit, AfterViewInit {
   private controls!: OrbitControls;
 
   // Stats
-  private stats: Stats = Stats();
+  private stats: Stats = new Stats();
 
   // Initialise renderer
   private renderer!: THREE.WebGLRenderer;
@@ -147,7 +147,7 @@ export class CombineMapsComponent implements OnInit, AfterViewInit {
     this.scene.remove(this.camera);
     this.gui.destroy();
 
-    this.stats.domElement.remove();
+    this.stats.dom.remove();
 
   }
 
@@ -180,7 +180,7 @@ export class CombineMapsComponent implements OnInit, AfterViewInit {
 
     this.claddingColourNormalMap.repeat.set(0.73, 0.73)
 
-    this.claddingColourMap.encoding = sRGBEncoding;
+    this.claddingColourMap.colorSpace = SRGBColorSpace;
 
     this.claddingColourNormalMap.wrapS = this.claddingColourNormalMap.wrapT = RepeatWrapping;
     this.claddingColourNormalMap.anisotropy = 4;
@@ -387,7 +387,7 @@ export class CombineMapsComponent implements OnInit, AfterViewInit {
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
     // Output Encoding
-    this.renderer.outputEncoding = THREE.sRGBEncoding;
+    this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     // Optimise Renderer shadow map
     // Only update the shadow once i.e. a non moving sun
     this.renderer.shadowMap.autoUpdate = false;
