@@ -44,6 +44,7 @@ import {RoofComponent} from './practise/roof/roof.component';
 import {TilesComponent} from './practise/tiles/tiles.component';
 import {CombineMapsComponent} from './practise/combine-maps/combine-maps.component';
 import {KitchenDoorProfileComponent} from './practise/kitchen-door-profile/kitchen-door-profile.component';
+import { ToneMappingDemoComponent } from './practise/tone-mapping-demo/tone-mapping-demo.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import {KitchenDoorProfileComponent} from './practise/kitchen-door-profile/kitch
     RoofComponent,
     TilesComponent,
     CombineMapsComponent,
-    KitchenDoorProfileComponent
+    KitchenDoorProfileComponent,
+    ToneMappingDemoComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
@@ -129,7 +131,8 @@ import {KitchenDoorProfileComponent} from './practise/kitchen-door-profile/kitch
       {path: 'roof', component: RoofComponent},
       {path: 'tiles', component: TilesComponent},
       {path: 'combine-maps', component: CombineMapsComponent},
-      {path: 'profiles', component: KitchenDoorProfileComponent}
+      {path: 'profiles', component: KitchenDoorProfileComponent},
+      {path: 'tone-mapping', component: ToneMappingDemoComponent}
 
     ])
   ],
